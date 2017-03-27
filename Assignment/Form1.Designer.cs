@@ -30,18 +30,18 @@
         {
             this.blue1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.blue4 = new System.Windows.Forms.Panel();
             this.blue5 = new System.Windows.Forms.Panel();
             this.blue6 = new System.Windows.Forms.Panel();
             this.blue7 = new System.Windows.Forms.Panel();
             this.blue8 = new System.Windows.Forms.Panel();
-            this.blue12 = new System.Windows.Forms.Panel();
+            this.blue9 = new System.Windows.Forms.Panel();
+            this.blue13 = new System.Windows.Forms.Panel();
             this.green = new System.Windows.Forms.Panel();
             this.red = new System.Windows.Forms.Panel();
             this.purple = new System.Windows.Forms.Panel();
-            this.black_l = new System.Windows.Forms.Panel();
+            this.brown_l = new System.Windows.Forms.Panel();
             this.black6 = new System.Windows.Forms.Panel();
-            this.black7 = new System.Windows.Forms.Panel();
+            this.black8 = new System.Windows.Forms.Panel();
             this.black5 = new System.Windows.Forms.Panel();
             this.black1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
@@ -52,10 +52,15 @@
             this.black3 = new System.Windows.Forms.Panel();
             this.black4 = new System.Windows.Forms.Panel();
             this.blue2 = new System.Windows.Forms.Panel();
-            this.blue3 = new System.Windows.Forms.Panel();
-            this.blue10 = new System.Windows.Forms.Panel();
+            this.blue4 = new System.Windows.Forms.Panel();
             this.blue11 = new System.Windows.Forms.Panel();
-            this.blue9 = new System.Windows.Forms.Panel();
+            this.blue12 = new System.Windows.Forms.Panel();
+            this.blue10 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.blue3 = new System.Windows.Forms.Panel();
+            this.black7 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // blue1
@@ -75,68 +80,68 @@
             this.button1.TabIndex = 17;
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // blue4
-            // 
-            this.blue4.BackColor = System.Drawing.Color.White;
-            this.blue4.Location = new System.Drawing.Point(283, 39);
-            this.blue4.Name = "blue4";
-            this.blue4.Size = new System.Drawing.Size(50, 134);
-            this.blue4.TabIndex = 1;
-            // 
             // blue5
             // 
             this.blue5.BackColor = System.Drawing.Color.White;
-            this.blue5.Location = new System.Drawing.Point(329, 39);
+            this.blue5.Location = new System.Drawing.Point(283, 39);
             this.blue5.Name = "blue5";
-            this.blue5.Size = new System.Drawing.Size(386, 40);
-            this.blue5.TabIndex = 2;
+            this.blue5.Size = new System.Drawing.Size(50, 134);
+            this.blue5.TabIndex = 1;
             // 
             // blue6
             // 
             this.blue6.BackColor = System.Drawing.Color.White;
-            this.blue6.Location = new System.Drawing.Point(714, 39);
+            this.blue6.Location = new System.Drawing.Point(329, 39);
             this.blue6.Name = "blue6";
-            this.blue6.Size = new System.Drawing.Size(47, 134);
-            this.blue6.TabIndex = 3;
+            this.blue6.Size = new System.Drawing.Size(386, 40);
+            this.blue6.TabIndex = 2;
             // 
             // blue7
             // 
             this.blue7.BackColor = System.Drawing.Color.White;
-            this.blue7.Location = new System.Drawing.Point(780, 213);
+            this.blue7.Location = new System.Drawing.Point(714, 39);
             this.blue7.Name = "blue7";
-            this.blue7.Size = new System.Drawing.Size(47, 369);
-            this.blue7.TabIndex = 4;
+            this.blue7.Size = new System.Drawing.Size(47, 134);
+            this.blue7.TabIndex = 3;
             // 
             // blue8
             // 
             this.blue8.BackColor = System.Drawing.Color.White;
-            this.blue8.Location = new System.Drawing.Point(535, 582);
+            this.blue8.Location = new System.Drawing.Point(780, 213);
             this.blue8.Name = "blue8";
-            this.blue8.Size = new System.Drawing.Size(292, 49);
-            this.blue8.TabIndex = 5;
+            this.blue8.Size = new System.Drawing.Size(47, 369);
+            this.blue8.TabIndex = 4;
             // 
-            // blue12
+            // blue9
             // 
-            this.blue12.BackColor = System.Drawing.Color.White;
-            this.blue12.Location = new System.Drawing.Point(99, 213);
-            this.blue12.Name = "blue12";
-            this.blue12.Size = new System.Drawing.Size(47, 369);
-            this.blue12.TabIndex = 6;
+            this.blue9.BackColor = System.Drawing.Color.White;
+            this.blue9.Location = new System.Drawing.Point(524, 582);
+            this.blue9.Name = "blue9";
+            this.blue9.Size = new System.Drawing.Size(303, 49);
+            this.blue9.TabIndex = 5;
+            // 
+            // blue13
+            // 
+            this.blue13.BackColor = System.Drawing.Color.White;
+            this.blue13.Location = new System.Drawing.Point(99, 213);
+            this.blue13.Name = "blue13";
+            this.blue13.Size = new System.Drawing.Size(47, 369);
+            this.blue13.TabIndex = 6;
             // 
             // green
             // 
             this.green.BackColor = System.Drawing.Color.White;
-            this.green.Location = new System.Drawing.Point(214, 630);
+            this.green.Location = new System.Drawing.Point(224, 630);
             this.green.Name = "green";
-            this.green.Size = new System.Drawing.Size(52, 97);
+            this.green.Size = new System.Drawing.Size(42, 90);
             this.green.TabIndex = 14;
             // 
             // red
             // 
             this.red.BackColor = System.Drawing.Color.White;
-            this.red.Location = new System.Drawing.Point(360, 630);
+            this.red.Location = new System.Drawing.Point(366, 630);
             this.red.Name = "red";
-            this.red.Size = new System.Drawing.Size(52, 97);
+            this.red.Size = new System.Drawing.Size(43, 90);
             this.red.TabIndex = 13;
             // 
             // purple
@@ -147,29 +152,29 @@
             this.purple.Size = new System.Drawing.Size(45, 86);
             this.purple.TabIndex = 16;
             // 
-            // black_l
+            // brown_l
             // 
-            this.black_l.BackColor = System.Drawing.Color.White;
-            this.black_l.Location = new System.Drawing.Point(404, 460);
-            this.black_l.Name = "black_l";
-            this.black_l.Size = new System.Drawing.Size(42, 86);
-            this.black_l.TabIndex = 15;
+            this.brown_l.BackColor = System.Drawing.Color.White;
+            this.brown_l.Location = new System.Drawing.Point(404, 460);
+            this.brown_l.Name = "brown_l";
+            this.brown_l.Size = new System.Drawing.Size(42, 86);
+            this.brown_l.TabIndex = 15;
             // 
             // black6
             // 
             this.black6.BackColor = System.Drawing.Color.White;
             this.black6.Location = new System.Drawing.Point(191, 262);
             this.black6.Name = "black6";
-            this.black6.Size = new System.Drawing.Size(476, 40);
+            this.black6.Size = new System.Drawing.Size(180, 40);
             this.black6.TabIndex = 10;
             // 
-            // black7
+            // black8
             // 
-            this.black7.BackColor = System.Drawing.Color.White;
-            this.black7.Location = new System.Drawing.Point(624, 301);
-            this.black7.Name = "black7";
-            this.black7.Size = new System.Drawing.Size(43, 123);
-            this.black7.TabIndex = 11;
+            this.black8.BackColor = System.Drawing.Color.White;
+            this.black8.Location = new System.Drawing.Point(624, 301);
+            this.black8.Name = "black8";
+            this.black8.Size = new System.Drawing.Size(43, 123);
+            this.black8.TabIndex = 11;
             // 
             // black5
             // 
@@ -182,9 +187,9 @@
             // black1
             // 
             this.black1.BackColor = System.Drawing.Color.White;
-            this.black1.Location = new System.Drawing.Point(535, 420);
+            this.black1.Location = new System.Drawing.Point(568, 420);
             this.black1.Name = "black1";
-            this.black1.Size = new System.Drawing.Size(132, 42);
+            this.black1.Size = new System.Drawing.Size(99, 42);
             this.black1.TabIndex = 8;
             // 
             // button2
@@ -199,7 +204,7 @@
             // blueBlack
             // 
             this.blueBlack.BackColor = System.Drawing.Color.White;
-            this.blueBlack.Location = new System.Drawing.Point(497, 460);
+            this.blueBlack.Location = new System.Drawing.Point(527, 460);
             this.blueBlack.Name = "blueBlack";
             this.blueBlack.Size = new System.Drawing.Size(41, 122);
             this.blueBlack.TabIndex = 7;
@@ -207,7 +212,7 @@
             // blackBlue
             // 
             this.blackBlue.BackColor = System.Drawing.Color.White;
-            this.blackBlue.Location = new System.Drawing.Point(496, 213);
+            this.blackBlue.Location = new System.Drawing.Point(329, 213);
             this.blackBlue.Name = "blackBlue";
             this.blackBlue.Size = new System.Drawing.Size(42, 50);
             this.blackBlue.TabIndex = 12;
@@ -226,7 +231,7 @@
             this.black2.BackColor = System.Drawing.Color.White;
             this.black2.Location = new System.Drawing.Point(443, 420);
             this.black2.Name = "black2";
-            this.black2.Size = new System.Drawing.Size(92, 42);
+            this.black2.Size = new System.Drawing.Size(125, 42);
             this.black2.TabIndex = 9;
             // 
             // black3
@@ -250,50 +255,100 @@
             this.blue2.BackColor = System.Drawing.Color.White;
             this.blue2.Location = new System.Drawing.Point(329, 169);
             this.blue2.Name = "blue2";
-            this.blue2.Size = new System.Drawing.Size(386, 45);
+            this.blue2.Size = new System.Drawing.Size(167, 45);
             this.blue2.TabIndex = 3;
             // 
-            // blue3
+            // blue4
             // 
-            this.blue3.BackColor = System.Drawing.Color.White;
-            this.blue3.Location = new System.Drawing.Point(714, 170);
-            this.blue3.Name = "blue3";
-            this.blue3.Size = new System.Drawing.Size(113, 45);
-            this.blue3.TabIndex = 4;
-            // 
-            // blue10
-            // 
-            this.blue10.BackColor = System.Drawing.Color.White;
-            this.blue10.Location = new System.Drawing.Point(264, 582);
-            this.blue10.Name = "blue10";
-            this.blue10.Size = new System.Drawing.Size(148, 49);
-            this.blue10.TabIndex = 6;
+            this.blue4.BackColor = System.Drawing.Color.White;
+            this.blue4.Location = new System.Drawing.Point(714, 170);
+            this.blue4.Name = "blue4";
+            this.blue4.Size = new System.Drawing.Size(113, 45);
+            this.blue4.TabIndex = 4;
             // 
             // blue11
             // 
             this.blue11.BackColor = System.Drawing.Color.White;
-            this.blue11.Location = new System.Drawing.Point(99, 582);
+            this.blue11.Location = new System.Drawing.Point(264, 582);
             this.blue11.Name = "blue11";
-            this.blue11.Size = new System.Drawing.Size(167, 49);
-            this.blue11.TabIndex = 7;
+            this.blue11.Size = new System.Drawing.Size(148, 49);
+            this.blue11.TabIndex = 6;
             // 
-            // blue9
+            // blue12
             // 
-            this.blue9.BackColor = System.Drawing.Color.White;
-            this.blue9.Location = new System.Drawing.Point(404, 582);
-            this.blue9.Name = "blue9";
-            this.blue9.Size = new System.Drawing.Size(131, 49);
-            this.blue9.TabIndex = 6;
+            this.blue12.BackColor = System.Drawing.Color.White;
+            this.blue12.Location = new System.Drawing.Point(99, 582);
+            this.blue12.Name = "blue12";
+            this.blue12.Size = new System.Drawing.Size(167, 49);
+            this.blue12.TabIndex = 7;
+            // 
+            // blue10
+            // 
+            this.blue10.BackColor = System.Drawing.Color.White;
+            this.blue10.Location = new System.Drawing.Point(404, 582);
+            this.blue10.Name = "blue10";
+            this.blue10.Size = new System.Drawing.Size(125, 49);
+            this.blue10.TabIndex = 6;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.SaddleBrown;
+            this.button4.Location = new System.Drawing.Point(404, 543);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(42, 39);
+            this.button4.TabIndex = 20;
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.Red;
+            this.button5.Location = new System.Drawing.Point(366, 714);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(43, 39);
+            this.button5.TabIndex = 21;
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.Green;
+            this.button6.Location = new System.Drawing.Point(224, 714);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(42, 39);
+            this.button6.TabIndex = 22;
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // blue3
+            // 
+            this.blue3.BackColor = System.Drawing.Color.White;
+            this.blue3.Location = new System.Drawing.Point(496, 169);
+            this.blue3.Name = "blue3";
+            this.blue3.Size = new System.Drawing.Size(219, 45);
+            this.blue3.TabIndex = 5;
+            // 
+            // black7
+            // 
+            this.black7.BackColor = System.Drawing.Color.White;
+            this.black7.Location = new System.Drawing.Point(366, 262);
+            this.black7.Name = "black7";
+            this.black7.Size = new System.Drawing.Size(301, 40);
+            this.black7.TabIndex = 11;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 765);
-            this.Controls.Add(this.blue9);
-            this.Controls.Add(this.blue11);
-            this.Controls.Add(this.blue10);
+            this.Controls.Add(this.blueBlack);
+            this.Controls.Add(this.blackBlue);
+            this.Controls.Add(this.black7);
             this.Controls.Add(this.blue3);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.blue10);
+            this.Controls.Add(this.blue12);
+            this.Controls.Add(this.blue11);
+            this.Controls.Add(this.blue4);
             this.Controls.Add(this.blue2);
             this.Controls.Add(this.black4);
             this.Controls.Add(this.black3);
@@ -301,23 +356,21 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.blue5);
-            this.Controls.Add(this.blackBlue);
-            this.Controls.Add(this.blueBlack);
+            this.Controls.Add(this.blue6);
             this.Controls.Add(this.purple);
             this.Controls.Add(this.black1);
             this.Controls.Add(this.black5);
-            this.Controls.Add(this.black7);
+            this.Controls.Add(this.black8);
             this.Controls.Add(this.black6);
-            this.Controls.Add(this.black_l);
+            this.Controls.Add(this.brown_l);
             this.Controls.Add(this.red);
             this.Controls.Add(this.green);
-            this.Controls.Add(this.blue12);
+            this.Controls.Add(this.blue13);
+            this.Controls.Add(this.blue9);
             this.Controls.Add(this.blue8);
-            this.Controls.Add(this.blue7);
             this.Controls.Add(this.blue1);
-            this.Controls.Add(this.blue6);
-            this.Controls.Add(this.blue4);
+            this.Controls.Add(this.blue7);
+            this.Controls.Add(this.blue5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -327,24 +380,24 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel blue4;
-        private System.Windows.Forms.Panel blue6;
-        private System.Windows.Forms.Panel blue1;
-        private System.Windows.Forms.Panel blue12;
+        private System.Windows.Forms.Panel blue5;
         private System.Windows.Forms.Panel blue7;
+        private System.Windows.Forms.Panel blue1;
+        private System.Windows.Forms.Panel blue13;
         private System.Windows.Forms.Panel blue8;
+        private System.Windows.Forms.Panel blue9;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel green;
         private System.Windows.Forms.Panel red;
         private System.Windows.Forms.Panel purple;
-        private System.Windows.Forms.Panel black_l;
+        private System.Windows.Forms.Panel brown_l;
         private System.Windows.Forms.Panel black6;
-        private System.Windows.Forms.Panel black7;
+        private System.Windows.Forms.Panel black8;
         private System.Windows.Forms.Panel black5;
         private System.Windows.Forms.Panel black1;
         private System.Windows.Forms.Panel blueBlack;
         private System.Windows.Forms.Panel blackBlue;
-        private System.Windows.Forms.Panel blue5;
+        private System.Windows.Forms.Panel blue6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -352,10 +405,15 @@
         private System.Windows.Forms.Panel black3;
         private System.Windows.Forms.Panel black4;
         private System.Windows.Forms.Panel blue2;
-        private System.Windows.Forms.Panel blue3;
-        private System.Windows.Forms.Panel blue10;
+        private System.Windows.Forms.Panel blue4;
         private System.Windows.Forms.Panel blue11;
-        private System.Windows.Forms.Panel blue9;
+        private System.Windows.Forms.Panel blue12;
+        private System.Windows.Forms.Panel blue10;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Panel blue3;
+        private System.Windows.Forms.Panel black7;
     }
 }
 
