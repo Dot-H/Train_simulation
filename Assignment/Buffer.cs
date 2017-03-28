@@ -35,9 +35,17 @@ namespace Assignment
                     Monitor.Wait(this);
 
                 trainColor = new List<Color>(this.trainColor); //Get the train color and its locomotives
-                if ((l = get_loco(nb)) != null) // Check either there is a locomotive to pickup
+                if ((l = get_loco(nb)) != null)// Check either there is a locomotive to pickup
+                {
                     trainColor.Add(l.Item1);
-
+                    if (trainColor.Count == 3)
+                    {
+                        if (trainColor[1].Equals(Color.Purple) || trainColor[1].Equals(Color.Brown))
+                            black_to_blue();
+                        else
+                            blue_to_black();
+                    }
+                }
                 Monitor.PulseAll(this);
             }
         }
@@ -49,9 +57,7 @@ namespace Assignment
                 empty[dst] = false;
                 this.trainColor = new List<Color>(trainColor);
                 if (src != -1)
-                {
                     empty[src] = true;
-                }
                 Monitor.PulseAll(this);
             }
         }
@@ -73,7 +79,7 @@ namespace Assignment
             lock (this)
             {
                 foreach (Tuple<Color, int> l in loco)
-                    if (nb == l.Item2)
+                    if (nb == l.Item2 && !findColor(l.Item1))
                     {
                         Tuple<Color, int> res = l;
                         loco.Remove(l);
@@ -94,6 +100,17 @@ namespace Assignment
             }
         }
 
+        private bool findColor(Color c)
+        {
+            lock (this)
+            {
+                foreach (var col in trainColor)
+                    if (col == c)
+                        return true;
+                return false;
+            }
+        }
+
         private bool find(Tuple<Color, int> t)
         {
             lock (this)
@@ -103,6 +120,18 @@ namespace Assignment
                         return true;
                 return false;
             }
+        }
+
+        public void black_to_blue()
+        {
+            lock (this)
+                g.swapAt(18, 19);
+        }
+
+        public void blue_to_black()
+        {
+            lock (this)
+                g.swapAt(8, 9);
         }
 
         public void Start()

@@ -133,7 +133,7 @@
             this.green.BackColor = System.Drawing.Color.White;
             this.green.Location = new System.Drawing.Point(224, 630);
             this.green.Name = "green";
-            this.green.Size = new System.Drawing.Size(42, 90);
+            this.green.Size = new System.Drawing.Size(42, 43);
             this.green.TabIndex = 14;
             // 
             // red
@@ -141,7 +141,7 @@
             this.red.BackColor = System.Drawing.Color.White;
             this.red.Location = new System.Drawing.Point(366, 630);
             this.red.Name = "red";
-            this.red.Size = new System.Drawing.Size(43, 90);
+            this.red.Size = new System.Drawing.Size(43, 43);
             this.red.TabIndex = 13;
             // 
             // purple
@@ -149,7 +149,7 @@
             this.purple.BackColor = System.Drawing.Color.White;
             this.purple.Location = new System.Drawing.Point(312, 460);
             this.purple.Name = "purple";
-            this.purple.Size = new System.Drawing.Size(45, 86);
+            this.purple.Size = new System.Drawing.Size(45, 40);
             this.purple.TabIndex = 16;
             // 
             // brown_l
@@ -157,7 +157,7 @@
             this.brown_l.BackColor = System.Drawing.Color.White;
             this.brown_l.Location = new System.Drawing.Point(404, 460);
             this.brown_l.Name = "brown_l";
-            this.brown_l.Size = new System.Drawing.Size(42, 86);
+            this.brown_l.Size = new System.Drawing.Size(42, 40);
             this.brown_l.TabIndex = 15;
             // 
             // black6
@@ -220,7 +220,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Purple;
-            this.button3.Location = new System.Drawing.Point(312, 543);
+            this.button3.Location = new System.Drawing.Point(312, 497);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(45, 39);
             this.button3.TabIndex = 19;
@@ -293,7 +293,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.SaddleBrown;
-            this.button4.Location = new System.Drawing.Point(404, 543);
+            this.button4.Location = new System.Drawing.Point(404, 497);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(42, 39);
             this.button4.TabIndex = 20;
@@ -302,7 +302,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Red;
-            this.button5.Location = new System.Drawing.Point(366, 714);
+            this.button5.Location = new System.Drawing.Point(366, 669);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(43, 39);
             this.button5.TabIndex = 21;
@@ -311,7 +311,7 @@
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.Green;
-            this.button6.Location = new System.Drawing.Point(224, 714);
+            this.button6.Location = new System.Drawing.Point(224, 669);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(42, 39);
             this.button6.TabIndex = 22;
@@ -338,6 +338,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 765);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.blueBlack);
             this.Controls.Add(this.blackBlue);
             this.Controls.Add(this.black7);
@@ -353,7 +354,6 @@
             this.Controls.Add(this.black4);
             this.Controls.Add(this.black3);
             this.Controls.Add(this.black2);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.blue6);
@@ -386,7 +386,6 @@
         private System.Windows.Forms.Panel blue13;
         private System.Windows.Forms.Panel blue8;
         private System.Windows.Forms.Panel blue9;
-        private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel green;
         private System.Windows.Forms.Panel red;
         private System.Windows.Forms.Panel purple;

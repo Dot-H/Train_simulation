@@ -11,26 +11,26 @@ namespace Assignment
 {
     class PanelController
     {
+        private Color origin_colour;
+
         private Panel panel;
         private Point origin;
         private Point train;
         private Button btn;
         private int delay;
         private bool westEast;
-        private int xDelta;
-        private int yDelta;
+        private int xDelta, yDelta;
         private bool horizontal;
         private bool locked = true;
         private double lenght;
         private int nb;
         private List<Color> colour;
         private Buffer buffer;
-        private Semaphore semaphore;
-        private bool first = true;
-        private bool is_loco;
         
-        public PanelController(Panel panel, Button btn, int delay, int nb, Color colour, Buffer buffer, Semaphore semaphore, bool westEast = true, int xDelta = 10, bool horizontal = true, bool is_loco = false)
+        public PanelController(Panel panel, Button btn, int delay, int nb, Color colour, Buffer buffer, bool westEast = true, int xDelta = 10, bool horizontal = true)
         {
+            this.origin_colour = colour;
+
             this.panel = panel;
             this.train = origin;
             this.horizontal = horizontal;
@@ -44,10 +44,11 @@ namespace Assignment
             yDelta = horizontal ? 0 : xDelta;
             get_origin();
             get_length();
-            this.colour = new List<Color>() { colour };
+            this.colour = new List<Color>() { Color.White };
             this.buffer = buffer;
-            this.semaphore = semaphore;
-            this.is_loco = is_loco;
+
+            this.panel.Paint += new PaintEventHandler(panel_paint);
+
         }
 
         private void zeroTrain()
@@ -66,27 +67,32 @@ namespace Assignment
         private void btnClick(object sender, EventArgs e)
         {
             this.locked = false;
-            this.btn.Enabled = false;
+            //this.btn.Enabled = false;
             lock (this)
             {
-                if (!locked)
-                    buffer.Write(colour, nb, -1);
+                while (locked || !buffer.empty[nb]) ;
+                this.colour = new List<Color> { origin_colour };
+                Thread p = new Thread(new ThreadStart(this.Start));
+                p.Start();
+                buffer.Write(new List<Color>() { origin_colour }, nb, -1);
             }
         }
 
         private void panel_paint(object sender, PaintEventArgs e)
         {
+            
             Graphics g = e.Graphics;
             int i = 0;
             foreach (Color col in colour)
             {
                 SolidBrush brush = new SolidBrush(col);
-                g.FillRectangle(brush, train.X-(xDelta*i), train.Y-(yDelta*i), 10, 10);
+                g.FillRectangle(brush, train.X - (xDelta * i), train.Y - (yDelta * i), 10, 10);
 
                 brush.Dispose();
                 i++;
             }
             g.Dispose();
+            
         }
 
         private void get_origin()
@@ -122,27 +128,13 @@ namespace Assignment
                 buffer.Read(ref colour, nb);
                 this.panel.Invalidate();
 
-                if (first)
-                    this.panel.Paint += new PaintEventHandler(panel_paint);
-                this.zeroTrain();
-                this.panel.Invalidate();
-
                 for (int i = 1; i <= lenght; i++)
                 {
                     this.moveTrain();
                     Thread.Sleep(delay);
                     panel.Invalidate();
                 }
-                first = false;
-
-                if (is_loco)
-                {
-                    buffer.put_loco(new Tuple<Color, int>(colour[0], buffer.getNext(nb)));
-                    remove_colours();
-                    panel.Invalidate();
-                    break;
-                }
-
+                
                 buffer.Write(colour, buffer.getNext(nb), nb);
                 remove_colours();
             }

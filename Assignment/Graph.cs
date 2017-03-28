@@ -32,13 +32,35 @@ namespace Assignment
         {
             for (int i = 0; i < len; i++)
                 for (int j = 0; j < len; j++)
-                    graph[i, j] = 0;
+                    graph[i, j] = -1;
         }
 
         public void setNext(int nb, int[] next)
         {
             foreach (int item in next)
                 graph[nb, item] = 1;
+        }
+
+        public void swapAt(int nb, int b) // There is maximum two ways.
+        {
+            /*
+            int a = -1;
+            int b = -1;
+            for (int i = 0; i < len && b == -1; i++)
+            {
+                if (graph[nb, i] != -1)
+                {
+                    if (a == -1)
+                        a = i;
+                    else
+                        b = i;
+                }
+            }
+            int tmp = graph[nb, a];
+            graph[nb, a] = graph[nb, b];
+            graph[nb, b] = tmp;
+            */
+            graph[nb, b] = 0;
         }
     }
 }
