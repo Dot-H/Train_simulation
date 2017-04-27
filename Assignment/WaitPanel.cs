@@ -14,8 +14,8 @@ namespace Assignment
         private Color origin_colour;
         private Panel panel;
         private Point origin;
-        private Point train;
-        private List<Color> colour;
+        private Point trainPos;
+        private Train train;
         private int delay;
         private bool westEast;
         private int xDelta;
@@ -25,13 +25,13 @@ namespace Assignment
         private int nb;
         private Buffer buffer;
 
-        public WaitPanel(Panel panel, Color colour, int delay, int nb, Buffer buffer, bool westEast = true, int xDelta = 10, bool horizontal = true)
+        public WaitPanel(Panel panel, Train train, int delay, int nb, Buffer buffer, bool westEast = true, int xDelta = 10, bool horizontal = true)
         {
-            this.origin_colour = colour;
+            this.origin_colour = train.colours[0];
 
             this.panel = panel;
-            this.train = origin;
-            this.colour = new List<Color>() { Color.White };
+            this.trainPos = origin;
+            this.train = train;
             this.horizontal = horizontal;
             this.delay = delay;
             this.westEast = westEast;
@@ -48,15 +48,15 @@ namespace Assignment
 
         private void zeroTrain()
         {
-            train.X = origin.X;
-            train.Y = origin.Y;
+            trainPos.X = origin.X;
+            trainPos.Y = origin.Y;
             this.panel.Invalidate();
         }
 
         private void moveTrain()
         {
-            train.X += xDelta;
-            train.Y += yDelta;
+            trainPos.X += xDelta;
+            trainPos.Y += yDelta;
         }
 
         private void panel_paint(object sender, PaintEventArgs e)
@@ -65,10 +65,10 @@ namespace Assignment
             {
                 Graphics g = e.Graphics;
                 int i = 0;
-                foreach (Color col in colour)
+                foreach (Color col in train.colours)
                 {
                     SolidBrush brush = new SolidBrush(col);
-                    g.FillRectangle(brush, train.X - (i * xDelta), train.Y - (i * yDelta), 10, 10);
+                    g.FillRectangle(brush, trainPos.X - (i * xDelta), trainPos.Y - (i * yDelta), 10, 10);
 
                     brush.Dispose();
                     i++;
@@ -101,7 +101,7 @@ namespace Assignment
             {
 
                 this.zeroTrain();
-                buffer.Read(ref colour, this.nb);
+                buffer.Read(ref train, this.nb);
                 this.panel.Invalidate();
 
                 for (int i = 1; i <= lenght; i++)
@@ -111,10 +111,10 @@ namespace Assignment
                     panel.Invalidate();
                 }
 
-                buffer.Write(colour, buffer.getNext(nb), nb);
+                buffer.Write(train, buffer.getNext(nb, train.g), nb);
 
-                for (int i = 0; i < colour.Count; i++)
-                    colour[i] = Color.White;
+                for (int i = 0; i < train.colours.Count; i++)
+                    train.colours[i] = Color.White;
                 
             }
         }

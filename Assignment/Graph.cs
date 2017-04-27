@@ -18,6 +18,13 @@ namespace Assignment
             init();
         }
 
+        public Graph(Graph g)
+        {
+            this.len = g.len;
+            graph = new int[len, len];
+            copy(g.graph);
+        }
+
         public int getNext(int nb, bool[] empty)
         {
             for (int i = 0; i < len; i++)
@@ -61,6 +68,13 @@ namespace Assignment
             graph[nb, b] = tmp;
             */
             graph[nb, b] = 0;
+        }
+
+        private void copy(int[,] tab)
+        {
+            for (int i = 0; i < len; i++)
+                for (int j = 0; j < len; j++)
+                    graph[i, j] = tab[i, j];
         }
     }
 }

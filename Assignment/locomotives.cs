@@ -23,11 +23,11 @@ namespace Assignment
         private bool horizontal;
         private bool locked = true;
         private double lenght;
-        private int nb;
+        private int next;
         private Color colour;
         private Buffer buffer;
 
-        public Locomotives(Panel panel, Button btn, int delay, int nb, Color colour, Buffer buffer, bool westEast = true, int xDelta = 10, bool horizontal = true)
+        public Locomotives(Panel panel, Button btn, int delay, int next, Color colour, Buffer buffer, bool westEast = true, int xDelta = 10, bool horizontal = true)
         {
             this.origin_colour = colour;
 
@@ -37,7 +37,7 @@ namespace Assignment
             this.btn = btn;
             this.btn.Click += new EventHandler(this.btnClick2);
             this.delay = delay;
-            this.nb = nb;
+            this.next = next;
             this.westEast = westEast;
             xDelta = westEast ? xDelta : -xDelta;
             this.xDelta = horizontal ? xDelta : 0;
@@ -109,7 +109,7 @@ namespace Assignment
             this.colour = origin_colour;
 
             this.panel.Invalidate();
-            buffer.put_loco(new Tuple<Color, int>(origin_colour, buffer.getNext(nb)));
+            buffer.put_loco(new Tuple<Color, int>(origin_colour, next));
 
             remove_colours();
             this.panel.Invalidate();

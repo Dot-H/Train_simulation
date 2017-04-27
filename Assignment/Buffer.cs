@@ -10,22 +10,20 @@ namespace Assignment
 {
     class Buffer
     {
-        private List<Color> trainColor;
+        private Train train;
         private List<Tuple<Color, int>> loco;
         public bool[] empty;
-        public Graph g;
 
-        public Buffer(int len, Graph g)
+        public Buffer(int len)
         {
             
             empty = new bool[len];
             for (int i = 0; i < len; i++)
                 empty[i] = true;
-            this.g = g;
             loco = new List<Tuple<Color, int>>();
         }
 
-        public void Read(ref List<Color> trainColor, int nb)
+        public void Read(ref Train train, int nb)
         {
             lock (this)
             {
@@ -34,28 +32,28 @@ namespace Assignment
                 while (empty[nb])
                     Monitor.Wait(this);
 
-                trainColor = new List<Color>(this.trainColor); //Get the train color and its locomotives
+                train = new Train(this.train); //Get the train color and its locomotives
                 if ((l = get_loco(nb)) != null)// Check either there is a locomotive to pickup
                 {
-                    trainColor.Add(l.Item1);
-                    if (trainColor.Count == 3)
+                    train.colours.Add(l.Item1);
+                    if (train.colours.Count == 3)
                     {
-                        if (trainColor[1].Equals(Color.Purple) || trainColor[1].Equals(Color.Brown))
-                            black_to_blue();
+                        if (train.colours[1].Equals(Color.Purple) || train.colours[1].Equals(Color.Brown))
+                            black_to_blue(train.g);
                         else
-                            blue_to_black();
+                            blue_to_black(train.g);
                     }
                 }
                 Monitor.PulseAll(this);
             }
         }
 
-        public void Write(List<Color> trainColor, int dst, int src)
+        public void Write(Train train, int dst, int src)
         {
             lock (this)
             {
                 empty[dst] = false;
-                this.trainColor = new List<Color>(trainColor);
+                this.train = new Train(train);
                 if (src != -1)
                     empty[src] = true;
                 Monitor.PulseAll(this);
@@ -89,7 +87,7 @@ namespace Assignment
             }
         }
 
-        public int getNext(int nb)
+        public int getNext(int nb, Graph g)
         {
             lock (this)
             {
@@ -104,7 +102,7 @@ namespace Assignment
         {
             lock (this)
             {
-                foreach (var col in trainColor)
+                foreach (var col in train.colours)
                     if (col == c)
                         return true;
                 return false;
@@ -122,13 +120,13 @@ namespace Assignment
             }
         }
 
-        public void black_to_blue()
+        public void black_to_blue(Graph g)
         {
             lock (this)
                 g.swapAt(18, 19);
         }
 
-        public void blue_to_black()
+        public void blue_to_black(Graph g)
         {
             lock (this)
                 g.swapAt(8, 9);
