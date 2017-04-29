@@ -1,4 +1,6 @@
-﻿namespace Assignment
+﻿using System.Drawing;
+
+namespace Assignment
 {
     partial class Form1
     {
@@ -61,6 +63,12 @@
             this.button6 = new System.Windows.Forms.Button();
             this.blue3 = new System.Windows.Forms.Panel();
             this.black7 = new System.Windows.Forms.Panel();
+            this.blue_acc = new System.Windows.Forms.TrackBar();
+            this.black_acc = new System.Windows.Forms.TrackBar();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.blue_acc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.black_acc)).BeginInit();
             this.SuspendLayout();
             // 
             // blue1
@@ -333,11 +341,59 @@
             this.black7.Size = new System.Drawing.Size(301, 40);
             this.black7.TabIndex = 11;
             // 
+            // blue_acc
+            // 
+            this.blue_acc.Location = new System.Drawing.Point(76, 39);
+            this.blue_acc.Maximum = 100;
+            this.blue_acc.Minimum = 30;
+            this.blue_acc.Name = "blue_acc";
+            this.blue_acc.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.blue_acc.Size = new System.Drawing.Size(170, 56);
+            this.blue_acc.TabIndex = 23;
+            this.blue_acc.TickFrequency = 5;
+            this.blue_acc.Value = 100;
+            this.blue_acc.Scroll += new System.EventHandler(this.blue_acc_Scroll);
+            // 
+            // black_acc
+            // 
+            this.black_acc.Location = new System.Drawing.Point(76, 101);
+            this.black_acc.Maximum = 100;
+            this.black_acc.Minimum = 30;
+            this.black_acc.Name = "black_acc";
+            this.black_acc.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.black_acc.Size = new System.Drawing.Size(170, 56);
+            this.black_acc.TabIndex = 24;
+            this.black_acc.TickFrequency = 5;
+            this.black_acc.Value = 100;
+            this.black_acc.Scroll += new System.EventHandler(this.blackAcc_Scroll);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.richTextBox1.Location = new System.Drawing.Point(32, 39);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(38, 40);
+            this.richTextBox1.TabIndex = 25;
+            this.richTextBox1.Text = "";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BackColor = System.Drawing.SystemColors.MenuText;
+            this.richTextBox2.Location = new System.Drawing.Point(32, 101);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(38, 40);
+            this.richTextBox2.TabIndex = 26;
+            this.richTextBox2.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 765);
+            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.black_acc);
+            this.Controls.Add(this.blue_acc);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.blueBlack);
             this.Controls.Add(this.blackBlue);
@@ -374,7 +430,10 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.blue_acc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.black_acc)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -413,6 +472,10 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel blue3;
         private System.Windows.Forms.Panel black7;
+        private System.Windows.Forms.TrackBar blue_acc;
+        private System.Windows.Forms.TrackBar black_acc;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }
 

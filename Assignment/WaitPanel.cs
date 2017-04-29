@@ -16,7 +16,6 @@ namespace Assignment
         private Point origin;
         private Point trainPos;
         private Train train;
-        private int delay;
         private bool westEast;
         private int xDelta;
         private int yDelta;
@@ -25,15 +24,14 @@ namespace Assignment
         private int nb;
         private Buffer buffer;
 
-        public WaitPanel(Panel panel, Train train, int delay, int nb, Buffer buffer, bool westEast = true, int xDelta = 10, bool horizontal = true)
+        public WaitPanel(Panel panel, Train train, int nb, Buffer buffer, bool westEast = true, int xDelta = 10, bool horizontal = true)
         {
-            this.origin_colour = train.colours[0];
+            this.origin_colour = train.Colours[0];
 
             this.panel = panel;
             this.trainPos = origin;
             this.train = train;
             this.horizontal = horizontal;
-            this.delay = delay;
             this.westEast = westEast;
             xDelta = westEast ? xDelta : -xDelta;
             this.xDelta = horizontal ? xDelta : 0;
@@ -61,19 +59,27 @@ namespace Assignment
 
         private void panel_paint(object sender, PaintEventArgs e)
         {
-            lock (this)
+            try
             {
-                Graphics g = e.Graphics;
-                int i = 0;
-                foreach (Color col in train.colours)
+                lock (this)
                 {
-                    SolidBrush brush = new SolidBrush(col);
-                    g.FillRectangle(brush, trainPos.X - (i * xDelta), trainPos.Y - (i * yDelta), 10, 10);
+                    Graphics g = e.Graphics;
+                    int i = 0;
+                    foreach (Color col in train.Colours)
+                    {
+                        SolidBrush brush = new SolidBrush(col);
+                        g.FillRectangle(brush, trainPos.X - (i * xDelta), trainPos.Y - (i * yDelta), 10, 10);
 
-                    brush.Dispose();
-                    i++;
+                        brush.Dispose();
+                        i++;
+                    }
+                    g.Dispose();
                 }
-                g.Dispose();
+            }
+            catch (System.InvalidOperationException)
+            {
+                Thread.Sleep(1);
+                panel.Invalidate();
             }
         }
 
@@ -107,14 +113,14 @@ namespace Assignment
                 for (int i = 1; i <= lenght; i++)
                 {
                     this.moveTrain();
-                    Thread.Sleep(delay);
+                    Thread.Sleep(train.Delay);
                     panel.Invalidate();
                 }
 
-                buffer.Write(train, buffer.getNext(nb, train.g), nb);
+                buffer.Write(train, buffer.getNext(nb, train.G), nb);
 
-                for (int i = 0; i < train.colours.Count; i++)
-                    train.colours[i] = Color.White;
+                for (int i = 0; i < train.Colours.Count; i++)
+                    train.Colours[i] = Color.White;
                 
             }
         }

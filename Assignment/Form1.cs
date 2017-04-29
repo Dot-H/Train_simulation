@@ -13,9 +13,16 @@ namespace Assignment
 {
     public partial class Form1 : Form
     {
+
+        private Buffer buffer;
+        private Train train1, train2, train_init;
+        public delegate void setAccValueDelegate_blue(int value);
+        public delegate void setAccValueDelegate_black(int value);
+        public setAccValueDelegate_blue setAccValueCallback_blue;
+        public setAccValueDelegate_black setAccValueCallback_black;
+
         public Form1()
         {
-            
             InitializeComponent();
 
             #region GRAPH_SETUP
@@ -53,50 +60,53 @@ namespace Assignment
             Graph graph2 = new Graph(graph);
             #endregion
 
-            Buffer buffer = new Buffer(graph_len);
+            buffer = new Buffer(graph_len, this);
+
             Semaphore semaphore = new Semaphore();
-            Train train1 = new Train(Color.Blue, graph);
-            Train train2 = new Train(Color.Black, graph2);
-            Train train_init = new Train(Color.White, graph);
+            train1 = new Train(Color.Blue, graph);
+            train2 = new Train(Color.Black, graph2, false);
+            train_init = new Train(Color.White, graph);
+            this.setAccValueCallback_blue += new setAccValueDelegate_blue(train1.set_acc);
+            this.setAccValueCallback_black += new setAccValueDelegate_black(train2.set_acc);
 
             #region PANELS_SETUP
 
-            PanelController p1 = new PanelController(blue1, button1, 100, 0, train1, buffer);
-            PanelController p2 = new PanelController(black1, button2, 100, 13, train2, buffer, false);
-            Locomotives p3 = new Locomotives(purple, button3, 100, 16, Color.Purple, buffer, false, 10, false);
-            Locomotives p4 = new Locomotives(brown_l, button4, 100, 15, Color.Brown, buffer, false, 10, false);
-            Locomotives p5 = new Locomotives(red, button5, 100, 10, Color.Red, buffer, false, 10, false);
-            Locomotives p6 = new Locomotives(green, button6, 100, 11, Color.Green, buffer, false, 10, false);
+            PanelController p1 = new PanelController(blue1, button1, 0, train1, buffer);
+            PanelController p2 = new PanelController(black1, button2, 13, train2, buffer, false);
+            Locomotives p3 = new Locomotives(purple, button3, 16, Color.Purple, buffer);
+            Locomotives p4 = new Locomotives(brown_l, button4, 15, Color.Brown, buffer);
+            Locomotives p5 = new Locomotives(red, button5, 10, Color.Red, buffer);
+            Locomotives p6 = new Locomotives(green, button6, 11, Color.Green, buffer);
 
-            WaitPanel w1 = new WaitPanel(blue2, train_init, 100, 1, buffer);
-            WaitPanel w2 = new WaitPanel(blue3, train_init, 100, 2, buffer);
-            WaitPanel w3 = new WaitPanel(blue4, train_init, 100, 3, buffer);
-            WaitPanel w4 = new WaitPanel(blue5, train_init, 40, 4, buffer, false, 10, false);
-            WaitPanel w5 = new WaitPanel(blue6, train_init, 100, 5, buffer);
-            WaitPanel w6 = new WaitPanel(blue7, train_init, 100, 6, buffer, true, 10, false);
-            WaitPanel w7 = new WaitPanel(blue8, train_init, 40, 7, buffer, true, 10, false);
-            WaitPanel w8 = new WaitPanel(blue9, train_init, 100, 8, buffer, false);
-            WaitPanel w9 = new WaitPanel(blue10, train_init, 100, 9, buffer, false);
-            WaitPanel w10 = new WaitPanel(blue11, train_init, 100, 10, buffer, false);
-            WaitPanel w11 = new WaitPanel(blue12, train_init, 100, 11, buffer, false);
-            WaitPanel w12 = new WaitPanel(blue13, train_init, 100, 12, buffer, false, 10, false);
+            WaitPanel w1 = new WaitPanel(blue2, train_init, 1, buffer);
+            WaitPanel w2 = new WaitPanel(blue3, train_init, 2, buffer);
+            WaitPanel w3 = new WaitPanel(blue4, train_init, 3, buffer);
+            WaitPanel w4 = new WaitPanel(blue5, train_init, 4, buffer, false, 10, false);
+            WaitPanel w5 = new WaitPanel(blue6, train_init, 5, buffer);
+            WaitPanel w6 = new WaitPanel(blue7, train_init, 6, buffer, true, 10, false);
+            WaitPanel w7 = new WaitPanel(blue8, train_init, 7, buffer, true, 10, false);
+            WaitPanel w8 = new WaitPanel(blue9, train_init, 8, buffer, false);
+            WaitPanel w9 = new WaitPanel(blue10, train_init, 9, buffer, false);
+            WaitPanel w10 = new WaitPanel(blue11, train_init, 10, buffer, false);
+            WaitPanel w11 = new WaitPanel(blue12, train_init, 11, buffer, false);
+            WaitPanel w12 = new WaitPanel(blue13, train_init, 12, buffer, false, 10, false);
 
-            WaitPanel w13 = new WaitPanel(black2, train_init, 100, 14, buffer, false);
-            WaitPanel w14 = new WaitPanel(black3, train_init, 100, 15, buffer, false);
-            WaitPanel w15 = new WaitPanel(black4, train_init, 40, 16, buffer, false);
-            WaitPanel w16 = new WaitPanel(black5, train_init, 100, 17, buffer, false, 10, false);
-            WaitPanel w17 = new WaitPanel(black6, train_init, 100, 18, buffer);
-            WaitPanel w18 = new WaitPanel(black7, train_init, 100, 19, buffer);
-            WaitPanel w19 = new WaitPanel(black8, train_init, 100, 20, buffer, true, 10, false);
+            WaitPanel w13 = new WaitPanel(black2, train_init, 14, buffer, false);
+            WaitPanel w14 = new WaitPanel(black3, train_init, 15, buffer, false);
+            WaitPanel w15 = new WaitPanel(black4, train_init, 16, buffer, false);
+            WaitPanel w16 = new WaitPanel(black5, train_init, 17, buffer, false, 10, false);
+            WaitPanel w17 = new WaitPanel(black6, train_init, 18, buffer);
+            WaitPanel w18 = new WaitPanel(black7, train_init, 19, buffer);
+            WaitPanel w19 = new WaitPanel(black8, train_init, 20, buffer, true, 10, false);
 
-            WaitPanel w20 = new WaitPanel(blackBlue, train_init, 100, 21, buffer, true, 10, false);
-            WaitPanel w21 = new WaitPanel(blueBlack, train_init, 100, 22, buffer, false, 10, false);
+            WaitPanel w20 = new WaitPanel(blackBlue, train_init, 21, buffer, true, 10, false);
+            WaitPanel w21 = new WaitPanel(blueBlack, train_init, 22, buffer, false, 10, false);
             #endregion
 
             #region THREAD_SETUP
-/*            Thread thread1 = new Thread(new ThreadStart(p1.Start));
+            Thread thread1 = new Thread(new ThreadStart(p1.Start));
             Thread thread2 = new Thread(new ThreadStart(p2.Start));
-            */Thread thread3 = new Thread(new ThreadStart(p3.Start));
+            Thread thread3 = new Thread(new ThreadStart(p3.Start));
             Thread thread4 = new Thread(new ThreadStart(p4.Start));
             Thread thread5 = new Thread(new ThreadStart(p5.Start));
             Thread thread6 = new Thread(new ThreadStart(p6.Start));
@@ -131,10 +141,10 @@ namespace Assignment
             #region THREAD_START
             bufThread.Start();
             sem.Start();
-            /*
+            
             thread1.Start();
             thread2.Start();
-            */thread3.Start();
+            thread3.Start();
             thread4.Start();
             thread5.Start();
             thread6.Start();
@@ -163,9 +173,24 @@ namespace Assignment
            #endregion
         }
 
+        private void blackAcc_Scroll(object sender, EventArgs e)
+        {
+            setAccValueCallback_black(black_acc.Value);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void blue_acc_Scroll(object sender, EventArgs e)
+        {
+            setAccValueCallback_blue(blue_acc.Value);
         }
     }
 }

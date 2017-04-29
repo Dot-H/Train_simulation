@@ -17,33 +17,21 @@ namespace Assignment
         private Point origin;
         private Point train;
         private Button btn;
-        private int delay;
-        private bool westEast;
-        private int xDelta, yDelta;
-        private bool horizontal;
         private bool locked = true;
-        private double lenght;
         private int next;
         private Color colour;
         private Buffer buffer;
 
-        public Locomotives(Panel panel, Button btn, int delay, int next, Color colour, Buffer buffer, bool westEast = true, int xDelta = 10, bool horizontal = true)
+        public Locomotives(Panel panel, Button btn, int next, Color colour, Buffer buffer)
         {
             this.origin_colour = colour;
 
             this.panel = panel;
             this.train = origin;
-            this.horizontal = horizontal;
             this.btn = btn;
             this.btn.Click += new EventHandler(this.btnClick2);
-            this.delay = delay;
             this.next = next;
-            this.westEast = westEast;
-            xDelta = westEast ? xDelta : -xDelta;
-            this.xDelta = horizontal ? xDelta : 0;
-            yDelta = horizontal ? 0 : xDelta;
             get_origin();
-            get_length();
             this.colour = Color.White;
             this.buffer = buffer;
             this.panel.Paint += new PaintEventHandler(panel_paint);
@@ -82,20 +70,7 @@ namespace Assignment
 
         private void get_origin()
         {
-            if (westEast)
-                origin = new Point(10, 10);
-            else if (horizontal)
-                origin = new Point(panel.Size.Width - 20, 10);
-            else
-                origin = new Point(10, panel.Size.Height - 20);
-        }
-
-        private void get_length()
-        {
-            if (horizontal)
-                lenght = (panel.Size.Width - 20 - 10) / 10;
-            else
-                lenght = (panel.Size.Height - 20 - 10) / 10;
+            origin = new Point(10, panel.Size.Height - 20);
         }
 
         private void remove_colours()

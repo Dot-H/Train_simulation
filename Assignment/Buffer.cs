@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Windows.Forms;
 using System.Drawing; 
 
 namespace Assignment
@@ -12,11 +13,13 @@ namespace Assignment
     {
         private Train train;
         private List<Tuple<Color, int>> loco;
+        private Form1 form1;
         public bool[] empty;
+        
 
-        public Buffer(int len)
+        public Buffer(int len, Form1 form1)
         {
-            
+            this.form1 = form1;
             empty = new bool[len];
             for (int i = 0; i < len; i++)
                 empty[i] = true;
@@ -33,17 +36,23 @@ namespace Assignment
                     Monitor.Wait(this);
 
                 train = new Train(this.train); //Get the train color and its locomotives
+                if (train.Is_blue)
+                    form1.setAccValueCallback_blue += train.set_acc;
+                else
+                    form1.setAccValueCallback_black += train.set_acc;
+
                 if ((l = get_loco(nb)) != null)// Check either there is a locomotive to pickup
                 {
-                    train.colours.Add(l.Item1);
-                    if (train.colours.Count == 3)
+                    train.Colours.Add(l.Item1);
+                    if (train.Colours.Count == 3)
                     {
-                        if (train.colours[1].Equals(Color.Purple) || train.colours[1].Equals(Color.Brown))
-                            black_to_blue(train.g);
+                        if (train.Colours[1].Equals(Color.Purple) || train.Colours[1].Equals(Color.Brown))
+                            black_to_blue(train.G);
                         else
-                            blue_to_black(train.g);
+                            blue_to_black(train.G);
                     }
                 }
+
                 Monitor.PulseAll(this);
             }
         }
@@ -102,7 +111,7 @@ namespace Assignment
         {
             lock (this)
             {
-                foreach (var col in train.colours)
+                foreach (var col in train.Colours)
                     if (col == c)
                         return true;
                 return false;
