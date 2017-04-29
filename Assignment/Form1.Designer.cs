@@ -345,7 +345,7 @@ namespace Assignment
             // 
             this.blue_acc.Location = new System.Drawing.Point(76, 39);
             this.blue_acc.Maximum = 100;
-            this.blue_acc.Minimum = 30;
+            this.blue_acc.Minimum = 1;
             this.blue_acc.Name = "blue_acc";
             this.blue_acc.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.blue_acc.Size = new System.Drawing.Size(170, 56);
@@ -358,7 +358,7 @@ namespace Assignment
             // 
             this.black_acc.Location = new System.Drawing.Point(76, 101);
             this.black_acc.Maximum = 100;
-            this.black_acc.Minimum = 30;
+            this.black_acc.Minimum = 1;
             this.black_acc.Name = "black_acc";
             this.black_acc.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.black_acc.Size = new System.Drawing.Size(170, 56);

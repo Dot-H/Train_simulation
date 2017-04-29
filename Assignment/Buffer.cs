@@ -11,7 +11,7 @@ namespace Assignment
 {
     class Buffer
     {
-        private Train train;
+        private Queue<Train>[] trains;
         private List<Tuple<Color, int>> loco;
         private Form1 form1;
         public bool[] empty;
@@ -21,8 +21,14 @@ namespace Assignment
         {
             this.form1 = form1;
             empty = new bool[len];
+            trains = new Queue<Train>[len];
+
             for (int i = 0; i < len; i++)
+            {
                 empty[i] = true;
+                trains[i] = new Queue<Train>();
+            }
+
             loco = new List<Tuple<Color, int>>();
         }
 
@@ -35,13 +41,13 @@ namespace Assignment
                 while (empty[nb])
                     Monitor.Wait(this);
 
-                train = new Train(this.train); //Get the train color and its locomotives
+                train = new Train(trains[nb].Dequeue()); //Get the train color and its locomotives
                 if (train.Is_blue)
                     form1.setAccValueCallback_blue += train.set_acc;
                 else
                     form1.setAccValueCallback_black += train.set_acc;
 
-                if ((l = get_loco(nb)) != null)// Check either there is a locomotive to pickup
+                if ((l = get_loco(nb, train)) != null)// Check either there is a locomotive to pickup
                 {
                     train.Colours.Add(l.Item1);
                     if (train.Colours.Count == 3)
@@ -62,7 +68,7 @@ namespace Assignment
             lock (this)
             {
                 empty[dst] = false;
-                this.train = new Train(train);
+                trains[dst].Enqueue(new Train(train));
                 if (src != -1)
                     empty[src] = true;
                 Monitor.PulseAll(this);
@@ -81,12 +87,12 @@ namespace Assignment
             }
         }
 
-        private Tuple<Color, int> get_loco(int nb)
+        private Tuple<Color, int> get_loco(int nb, Train train)
         {
             lock (this)
             {
                 foreach (Tuple<Color, int> l in loco)
-                    if (nb == l.Item2 && !findColor(l.Item1))
+                    if (nb == l.Item2 && !findColor(l.Item1, train))
                     {
                         Tuple<Color, int> res = l;
                         loco.Remove(l);
@@ -107,7 +113,7 @@ namespace Assignment
             }
         }
 
-        private bool findColor(Color c)
+        private bool findColor(Color c, Train train)
         {
             lock (this)
             {
