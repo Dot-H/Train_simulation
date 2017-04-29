@@ -29,7 +29,7 @@ namespace Assignment
             int graph_len = 27;
             Graph graph = new Graph(graph_len);
 
-            graph.setNext(0, new int[] { 1, 4}); // 1 4
+            graph.setNext(0, new int[] { 1, 4, 21}); // 1 4
             graph.setNext(1, new int[] { 2 });
             graph.setNext(2, new int[] { 3 });
             graph.setNext(3, new int[] { 7 });
@@ -37,21 +37,21 @@ namespace Assignment
             graph.setNext(5, new int[] { 6 });
             graph.setNext(6, new int[] { 3 });
             graph.setNext(7, new int[] { 8 });
-            graph.setNext(8, new int[] { 9, 22}); // 9 22
+            graph.setNext(8, new int[] { 9, 22}); 
             graph.setNext(9, new int[] { 10 });
             graph.setNext(10, new int[] { 11 });
             graph.setNext(11, new int[] { 12 });
             graph.setNext(12, new int[] { 0 });
-            graph.setNext(13, new int[] { 14 }); 
+            graph.setNext(13, new int[] { 14, 22 }); 
             graph.setNext(14, new int[] { 15 });
             graph.setNext(15, new int[] { 16 });
             graph.setNext(16, new int[] { 17 });
             graph.setNext(17, new int[] { 18 });
-            graph.setNext(18, new int[] { 19, 21}); // 19 21
+            graph.setNext(18, new int[] { 19, 21});
             graph.setNext(19, new int[] { 20 });
             graph.setNext(20, new int[] { 13 });
-            graph.setNext(21, new int[] { 1 });
-            graph.setNext(22, new int[] { 14 });
+            graph.setNext(21, new int[] { 1, 18});
+            graph.setNext(22, new int[] { 14, 9});
             graph.setNext(23, new int[] { 16 });
             graph.setNext(24, new int[] { 15 });
             graph.setNext(25, new int[] { 10 });
@@ -73,10 +73,10 @@ namespace Assignment
 
             PanelController p1 = new PanelController(blue1, button1, 0, train1, buffer);
             PanelController p2 = new PanelController(black1, button2, 13, train2, buffer, false);
-            Locomotives p3 = new Locomotives(purple, button3, 16, Color.Purple, buffer);
+            Locomotives p3 = new Locomotives(purple, button3, 5, Color.Purple, buffer);
             Locomotives p4 = new Locomotives(brown_l, button4, 15, Color.Brown, buffer);
             Locomotives p5 = new Locomotives(red, button5, 10, Color.Red, buffer);
-            Locomotives p6 = new Locomotives(green, button6, 11, Color.Green, buffer);
+            Locomotives p6 = new Locomotives(green, button6, 2, Color.Green, buffer);
 
             WaitPanel w1 = new WaitPanel(blue2, train_init, 1, buffer);
             WaitPanel w2 = new WaitPanel(blue3, train_init, 2, buffer);

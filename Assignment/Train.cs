@@ -14,6 +14,7 @@ namespace Assignment
         private Graph g;
         private int delay;
         private bool is_blue;
+        private Stack<int> path;
 
         public Train(Color colour, Graph g, bool is_blue = true, int delay = 100)
         {
@@ -30,7 +31,8 @@ namespace Assignment
                 this.Colours = new List<Color>(t.Colours);
                 this.G = new Graph(t.G);
                 this.Delay = t.Delay;
-                this.Is_blue = t.is_blue;
+                this.Is_blue = t.Is_blue;
+                this.path = t.Path;
             }
         }
 
@@ -97,6 +99,21 @@ namespace Assignment
             {
                 lock (this)
                     is_blue = value;
+            }
+        }
+
+        public Stack<int> Path
+        {
+            get
+            {
+                lock (this)
+                    return path;
+            }
+
+            set
+            {
+                lock (this)
+                    path = value;
             }
         }
     }

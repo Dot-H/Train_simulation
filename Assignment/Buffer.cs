@@ -102,12 +102,12 @@ namespace Assignment
             }
         }
 
-        public int getNext(int nb, Graph g)
+        public int getNext(Train train)
         {
             lock (this)
             {
                 int next;
-                while ((next = g.getNext(nb, empty)) == -1)
+                while ((next = train.G.getNext(train, empty)) == -1)
                     Monitor.Wait(this);
                 return next;
             }

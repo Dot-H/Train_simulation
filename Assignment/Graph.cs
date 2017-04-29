@@ -11,10 +11,12 @@ namespace Assignment
     {
         private int len;
         private int[,] graph;
+
+
         public Graph(int len)
         {
             this.len = len;
-            graph = new int[len,len];
+            graph = new int[len, len];
             init();
         }
 
@@ -25,14 +27,13 @@ namespace Assignment
             copy(g.graph);
         }
 
-        public int getNext(int nb, bool[] empty)
+        public int getNext(Train train, bool[] empty)
         {
-            for (int i = 0; i < len; i++)
+            if (train.Path.Count > 0 && empty[train.Path.Peek()])
             {
-                if (graph[nb, i] == 1 && empty[i])
-                    return i;
+                return train.Path.Pop();
             }
-            return -1;        
+            return -1;
         }
 
         private void init()
@@ -48,25 +49,8 @@ namespace Assignment
                 graph[nb, item] = 1;
         }
 
-        public void swapAt(int nb, int b) // There is maximum two ways.
+        public void swapAt(int nb, int b)
         {
-            /*
-            int a = -1;
-            int b = -1;
-            for (int i = 0; i < len && b == -1; i++)
-            {
-                if (graph[nb, i] != -1)
-                {
-                    if (a == -1)
-                        a = i;
-                    else
-                        b = i;
-                }
-            }
-            int tmp = graph[nb, a];
-            graph[nb, a] = graph[nb, b];
-            graph[nb, b] = tmp;
-            */
             graph[nb, b] = 0;
         }
 
@@ -75,6 +59,40 @@ namespace Assignment
             for (int i = 0; i < len; i++)
                 for (int j = 0; j < len; j++)
                     graph[i, j] = tab[i, j];
+        }
+
+        public Stack<int> backtracking(int start, int end)
+        {
+            Stack<int> path = new Stack<int>();
+            bool[] visited = new bool[len];
+            backtracking_rec(start, end, visited, ref path);
+            path.Pop();
+            return path;
+        }
+
+        private void init_visited(ref bool[] visited)
+        {
+            for (int i = 0; i < len; i++)
+                    visited[i] = false;
+        }
+
+        private bool backtracking_rec(int start, int end, bool[] visited, ref Stack<int> path)
+        {
+            visited[start] = true;
+            if (start == end)
+            {
+                path.Push(start);
+                return true;
+            }
+            for (int i = 0; i < len; i++)
+            {
+                if (graph[start, i] == 1 && !visited[i] && backtracking_rec(i, end, visited, ref path))
+                {
+                    path.Push(start);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

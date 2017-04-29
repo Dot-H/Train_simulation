@@ -117,7 +117,7 @@ namespace Assignment
                     panel.Invalidate();
                 }
 
-                buffer.Write(train, buffer.getNext(nb, train.G), nb);
+                buffer.Write(train, buffer.getNext(train), nb);
 
                 for (int i = 0; i < train.Colours.Count; i++)
                     train.Colours[i] = Color.White;

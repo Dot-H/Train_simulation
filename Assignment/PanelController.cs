@@ -69,6 +69,9 @@ namespace Assignment
             this.btn.Enabled = false;
             lock (this)
             {
+                train.Path = train.G.backtracking(0, 2);
+                foreach (var el in train.Path)
+                    Console.Write(el + " |");
                 while (locked || !buffer.empty[nb]) ;
                 train.Colours[0] = origin_colour;
                 buffer.Write(train, nb, -1);
@@ -141,7 +144,7 @@ namespace Assignment
                     panel.Invalidate();
                 }
                 
-                buffer.Write(train, buffer.getNext(nb, train.G), nb);
+                buffer.Write(train, buffer.getNext(train), nb);
                 remove_colours();
             }
         }
