@@ -15,6 +15,7 @@ namespace Assignment
         private int delay;
         private bool is_blue;
         private Stack<int> path;
+        private Queue<int> order;
 
         public Train(Color colour, Graph g, bool is_blue = true, int delay = 100)
         {
@@ -22,6 +23,7 @@ namespace Assignment
             this.G = g;
             this.Delay = delay;
             this.Is_blue = is_blue;
+            this.Order = new Queue<int>();
         }
 
         public Train(Train t)
@@ -33,6 +35,7 @@ namespace Assignment
                 this.Delay = t.Delay;
                 this.Is_blue = t.Is_blue;
                 this.path = t.Path;
+                this.Order = t.Order;
             }
         }
 
@@ -42,6 +45,21 @@ namespace Assignment
                 Delay = value;
         }
 
+        public string path_string()
+        {
+            string res = "";
+
+            for (int i = 0; i < Path.Count - 1; i++)
+                res += Path.ElementAt<int>(i) + " -> ";
+
+            if (Path.Count > 0)
+                res += Path.ElementAt<int>(Path.Count - 1);
+
+            return res;
+
+        }
+
+#region getters_setters
         public List<Color> Colours
         {
             get
@@ -116,5 +134,21 @@ namespace Assignment
                     path = value;
             }
         }
+
+        public Queue<int> Order
+        {
+            get
+            {
+                lock (this)
+                    return order;
+                }
+
+            set
+            {
+                lock (this)
+                    order = value;
+            }
+        }
+        #endregion
     }
 }

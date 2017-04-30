@@ -18,6 +18,7 @@ namespace Assignment
         private Train train1, train2, train_init;
         public delegate void setAccValueDelegate_blue(int value);
         public delegate void setAccValueDelegate_black(int value);
+
         public setAccValueDelegate_blue setAccValueCallback_blue;
         public setAccValueDelegate_black setAccValueCallback_black;
 
@@ -62,12 +63,11 @@ namespace Assignment
 
             buffer = new Buffer(graph_len, this);
 
-            Semaphore semaphore = new Semaphore();
             train1 = new Train(Color.Blue, graph);
             train2 = new Train(Color.Black, graph2, false);
             train_init = new Train(Color.White, graph);
             this.setAccValueCallback_blue += new setAccValueDelegate_blue(train1.set_acc);
-            this.setAccValueCallback_black += new setAccValueDelegate_black(train2.set_acc);
+            buffer.setDestValueCallback_blue = new Buffer.setDestValueDelegate_blue(set_textbox);
 
             #region PANELS_SETUP
 
@@ -76,7 +76,7 @@ namespace Assignment
             Locomotives p3 = new Locomotives(purple, button3, 5, Color.Purple, buffer);
             Locomotives p4 = new Locomotives(brown_l, button4, 15, Color.Brown, buffer);
             Locomotives p5 = new Locomotives(red, button5, 20, Color.Red, buffer);
-            Locomotives p6 = new Locomotives(green, button6, 2, Color.Green, buffer);
+            Locomotives p6 = new Locomotives(green, button6, 10, Color.Green, buffer);
 
             WaitPanel w1 = new WaitPanel(blue2, train_init, 1, buffer);
             WaitPanel w2 = new WaitPanel(blue3, train_init, 2, buffer);
@@ -106,6 +106,12 @@ namespace Assignment
             #region THREAD_SETUP
             Thread thread1 = new Thread(new ThreadStart(p1.Start));
             Thread thread2 = new Thread(new ThreadStart(p2.Start));
+
+            Thread loco1 = new Thread(new ThreadStart(p3.Start));
+            Thread loco2 = new Thread(new ThreadStart(p4.Start));
+            Thread loco3 = new Thread(new ThreadStart(p5.Start));
+            Thread loco4  = new Thread(new ThreadStart(p6.Start));
+ 
             Thread thread3 = new Thread(new ThreadStart(p3.Start));
             Thread thread4 = new Thread(new ThreadStart(p4.Start));
             Thread thread5 = new Thread(new ThreadStart(p5.Start));
@@ -135,15 +141,18 @@ namespace Assignment
 
             Thread bufThread = new Thread(new ThreadStart(buffer.Start));
 
-            Thread sem = new Thread(new ThreadStart(semaphore.Start));
             #endregion
 
             #region THREAD_START
             bufThread.Start();
-            sem.Start();
             
             thread1.Start();
             thread2.Start();
+
+            loco1.Start();
+            loco2.Start();
+            loco3.Start();
+            loco4.Start();
             thread3.Start();
             thread4.Start();
             thread5.Start();
@@ -188,9 +197,24 @@ namespace Assignment
 
         }
 
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void blue_acc_Scroll(object sender, EventArgs e)
         {
             setAccValueCallback_blue(blue_acc.Value);
+        }
+
+        private void set_textbox(string txt)
+        {
+            blue_path.Invoke(new Action(() => blue_path.Text = txt));
         }
     }
 }

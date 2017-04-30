@@ -61,7 +61,7 @@ namespace Assignment
                     graph[i, j] = tab[i, j];
         }
 
-        public Stack<int> backtracking(int start, int end, List<int> forbidden)
+        public Stack<int> backtracking(int start, int end, Queue<int> forbidden)
         {
             Stack<int> path = new Stack<int>();
             bool[] visited = new bool[len];
@@ -76,7 +76,7 @@ namespace Assignment
                     visited[i] = false;
         }
 
-        private bool find(List<int> list, int value)
+        private bool find(Queue<int> list, int value)
         {
             foreach (int item in list)
                 if (value == item)
@@ -85,7 +85,7 @@ namespace Assignment
             return false;
         }
 
-        private bool backtracking_rec(int start, int end, bool[] visited, List<int> forbidden, ref Stack<int> path)
+        private bool backtracking_rec(int start, int end, bool[] visited, Queue<int> forbidden, ref Stack<int> path)
         {
             visited[start] = true;
             if (start == end)

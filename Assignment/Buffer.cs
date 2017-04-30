@@ -15,7 +15,9 @@ namespace Assignment
         private List<Tuple<Color, int>> loco;
         private Form1 form1;
         public bool[] empty;
-        
+
+        public delegate void setDestValueDelegate_blue(string txt);
+        public setDestValueDelegate_blue setDestValueCallback_blue;
 
         public Buffer(int len, Form1 form1)
         {
@@ -41,7 +43,7 @@ namespace Assignment
                 while (empty[nb])
                     Monitor.Wait(this);
 
-                train = new Train(trains[nb].Dequeue()); //Get the train color and its locomotives
+                train = new Train(trains[nb].Dequeue()); 
                 if (train.Is_blue)
                     form1.setAccValueCallback_blue += train.set_acc;
                 else
@@ -50,6 +52,12 @@ namespace Assignment
                 if ((l = get_loco(nb, train)) != null)// Check either there is a locomotive to pickup
                 {
                     train.Colours.Add(l.Item1);
+                    if (train.Order.Count > 0)
+                    {
+                        int end = train.Order.Dequeue();
+                        train.Path = train.G.backtracking(nb, end, train.Order);
+                    }
+                    /*
                     if (train.Colours.Count == 3)
                     {
                         if (train.Colours[1].Equals(Color.Purple) || train.Colours[1].Equals(Color.Brown))
@@ -57,6 +65,7 @@ namespace Assignment
                         else
                             blue_to_black(train.G);
                     }
+                    */
                 }
 
                 Monitor.PulseAll(this);
@@ -109,6 +118,8 @@ namespace Assignment
                 int next;
                 while ((next = train.G.getNext(train, empty)) == -1)
                     Monitor.Wait(this);
+
+                write_path(train);
                 return next;
             }
         }
@@ -134,17 +145,10 @@ namespace Assignment
                 return false;
             }
         }
-
-        public void black_to_blue(Graph g)
+        
+        public void write_path(Train train)
         {
-            lock (this)
-                g.swapAt(18, 19);
-        }
-
-        public void blue_to_black(Graph g)
-        {
-            lock (this)
-                g.swapAt(8, 9);
+            setDestValueCallback_blue(train.path_string());
         }
 
         public void Start()

@@ -67,12 +67,19 @@ namespace Assignment
         {
             this.locked = false;
             this.btn.Enabled = false;
+            train.Order.Enqueue(5);
+            train.Order.Enqueue(15);
+            train.Order.Enqueue(20);
+            train.Order.Enqueue(10);
             lock (this)
             {
-                train.Path = train.G.backtracking(0, 5, new List<int>() { 20, 15, 2 });
-                foreach (var el in train.Path)
-                    Console.Write(el + " |");
-                while (locked || !buffer.empty[nb]) ;
+                int end = train.Order.Dequeue();
+
+                train.Path = train.G.backtracking(0, end, train.Order);
+                buffer.write_path(train);
+
+                while (locked || !buffer.empty[nb]);
+
                 train.Colours[0] = origin_colour;
                 buffer.Write(train, nb, -1);
             }
