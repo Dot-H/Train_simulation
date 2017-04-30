@@ -75,7 +75,7 @@ namespace Assignment
             PanelController p2 = new PanelController(black1, button2, 13, train2, buffer, false);
             Locomotives p3 = new Locomotives(purple, button3, 5, Color.Purple, buffer);
             Locomotives p4 = new Locomotives(brown_l, button4, 15, Color.Brown, buffer);
-            Locomotives p5 = new Locomotives(red, button5, 10, Color.Red, buffer);
+            Locomotives p5 = new Locomotives(red, button5, 20, Color.Red, buffer);
             Locomotives p6 = new Locomotives(green, button6, 2, Color.Green, buffer);
 
             WaitPanel w1 = new WaitPanel(blue2, train_init, 1, buffer);

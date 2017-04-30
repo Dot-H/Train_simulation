@@ -69,7 +69,7 @@ namespace Assignment
             this.btn.Enabled = false;
             lock (this)
             {
-                train.Path = train.G.backtracking(0, 2);
+                train.Path = train.G.backtracking(0, 5, new List<int>() { 20, 15, 2 });
                 foreach (var el in train.Path)
                     Console.Write(el + " |");
                 while (locked || !buffer.empty[nb]) ;

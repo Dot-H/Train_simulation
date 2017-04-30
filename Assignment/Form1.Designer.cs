@@ -147,9 +147,9 @@ namespace Assignment
             // red
             // 
             this.red.BackColor = System.Drawing.Color.White;
-            this.red.Location = new System.Drawing.Point(376, 678);
+            this.red.Location = new System.Drawing.Point(676, 386);
             this.red.Name = "red";
-            this.red.Size = new System.Drawing.Size(43, 43);
+            this.red.Size = new System.Drawing.Size(49, 43);
             this.red.TabIndex = 13;
             // 
             // purple
@@ -163,7 +163,7 @@ namespace Assignment
             // brown_l
             // 
             this.brown_l.BackColor = System.Drawing.Color.White;
-            this.brown_l.Location = new System.Drawing.Point(414, 508);
+            this.brown_l.Location = new System.Drawing.Point(414, 545);
             this.brown_l.Name = "brown_l";
             this.brown_l.Size = new System.Drawing.Size(42, 40);
             this.brown_l.TabIndex = 15;
@@ -171,7 +171,7 @@ namespace Assignment
             // black6
             // 
             this.black6.BackColor = System.Drawing.Color.White;
-            this.black6.Location = new System.Drawing.Point(201, 310);
+            this.black6.Location = new System.Drawing.Point(201, 347);
             this.black6.Name = "black6";
             this.black6.Size = new System.Drawing.Size(180, 40);
             this.black6.TabIndex = 10;
@@ -179,7 +179,7 @@ namespace Assignment
             // black8
             // 
             this.black8.BackColor = System.Drawing.Color.White;
-            this.black8.Location = new System.Drawing.Point(634, 349);
+            this.black8.Location = new System.Drawing.Point(634, 386);
             this.black8.Name = "black8";
             this.black8.Size = new System.Drawing.Size(43, 123);
             this.black8.TabIndex = 11;
@@ -187,7 +187,7 @@ namespace Assignment
             // black5
             // 
             this.black5.BackColor = System.Drawing.Color.White;
-            this.black5.Location = new System.Drawing.Point(201, 349);
+            this.black5.Location = new System.Drawing.Point(201, 386);
             this.black5.Name = "black5";
             this.black5.Size = new System.Drawing.Size(43, 123);
             this.black5.TabIndex = 9;
@@ -195,7 +195,7 @@ namespace Assignment
             // black1
             // 
             this.black1.BackColor = System.Drawing.Color.White;
-            this.black1.Location = new System.Drawing.Point(578, 468);
+            this.black1.Location = new System.Drawing.Point(578, 505);
             this.black1.Name = "black1";
             this.black1.Size = new System.Drawing.Size(99, 42);
             this.black1.TabIndex = 8;
@@ -203,7 +203,7 @@ namespace Assignment
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Desktop;
-            this.button2.Location = new System.Drawing.Point(676, 468);
+            this.button2.Location = new System.Drawing.Point(676, 505);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(49, 42);
             this.button2.TabIndex = 18;
@@ -212,9 +212,9 @@ namespace Assignment
             // blueBlack
             // 
             this.blueBlack.BackColor = System.Drawing.Color.White;
-            this.blueBlack.Location = new System.Drawing.Point(537, 508);
+            this.blueBlack.Location = new System.Drawing.Point(537, 545);
             this.blueBlack.Name = "blueBlack";
-            this.blueBlack.Size = new System.Drawing.Size(41, 122);
+            this.blueBlack.Size = new System.Drawing.Size(41, 85);
             this.blueBlack.TabIndex = 7;
             // 
             // blackBlue
@@ -222,7 +222,7 @@ namespace Assignment
             this.blackBlue.BackColor = System.Drawing.Color.White;
             this.blackBlue.Location = new System.Drawing.Point(339, 261);
             this.blackBlue.Name = "blackBlue";
-            this.blackBlue.Size = new System.Drawing.Size(42, 50);
+            this.blackBlue.Size = new System.Drawing.Size(39, 87);
             this.blackBlue.TabIndex = 12;
             // 
             // button3
@@ -237,7 +237,7 @@ namespace Assignment
             // black2
             // 
             this.black2.BackColor = System.Drawing.Color.White;
-            this.black2.Location = new System.Drawing.Point(453, 468);
+            this.black2.Location = new System.Drawing.Point(453, 505);
             this.black2.Name = "black2";
             this.black2.Size = new System.Drawing.Size(125, 42);
             this.black2.TabIndex = 9;
@@ -245,7 +245,7 @@ namespace Assignment
             // black3
             // 
             this.black3.BackColor = System.Drawing.Color.White;
-            this.black3.Location = new System.Drawing.Point(361, 468);
+            this.black3.Location = new System.Drawing.Point(361, 505);
             this.black3.Name = "black3";
             this.black3.Size = new System.Drawing.Size(92, 42);
             this.black3.TabIndex = 10;
@@ -253,7 +253,7 @@ namespace Assignment
             // black4
             // 
             this.black4.BackColor = System.Drawing.Color.White;
-            this.black4.Location = new System.Drawing.Point(201, 468);
+            this.black4.Location = new System.Drawing.Point(201, 505);
             this.black4.Name = "black4";
             this.black4.Size = new System.Drawing.Size(163, 42);
             this.black4.TabIndex = 11;
@@ -301,7 +301,7 @@ namespace Assignment
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.SaddleBrown;
-            this.button4.Location = new System.Drawing.Point(414, 545);
+            this.button4.Location = new System.Drawing.Point(414, 582);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(42, 39);
             this.button4.TabIndex = 20;
@@ -310,9 +310,9 @@ namespace Assignment
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.Red;
-            this.button5.Location = new System.Drawing.Point(376, 717);
+            this.button5.Location = new System.Drawing.Point(724, 386);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(43, 39);
+            this.button5.Size = new System.Drawing.Size(43, 43);
             this.button5.TabIndex = 21;
             this.button5.UseVisualStyleBackColor = false;
             // 
@@ -336,7 +336,7 @@ namespace Assignment
             // black7
             // 
             this.black7.BackColor = System.Drawing.Color.White;
-            this.black7.Location = new System.Drawing.Point(376, 310);
+            this.black7.Location = new System.Drawing.Point(376, 347);
             this.black7.Name = "black7";
             this.black7.Size = new System.Drawing.Size(301, 40);
             this.black7.TabIndex = 11;
@@ -390,12 +390,13 @@ namespace Assignment
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 765);
+            this.Controls.Add(this.red);
+            this.Controls.Add(this.blueBlack);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.black_acc);
             this.Controls.Add(this.blue_acc);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.blueBlack);
             this.Controls.Add(this.blackBlue);
             this.Controls.Add(this.black7);
             this.Controls.Add(this.blue3);
@@ -419,7 +420,6 @@ namespace Assignment
             this.Controls.Add(this.black8);
             this.Controls.Add(this.black6);
             this.Controls.Add(this.brown_l);
-            this.Controls.Add(this.red);
             this.Controls.Add(this.green);
             this.Controls.Add(this.blue13);
             this.Controls.Add(this.blue9);
