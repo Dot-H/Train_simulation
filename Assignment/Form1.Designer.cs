@@ -90,7 +90,29 @@ namespace Assignment
             this.black_acc = new System.Windows.Forms.TrackBar();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.blue_path = new System.Windows.Forms.Label();
+            this.blueOrdrTxt = new System.Windows.Forms.Label();
+            this.blueBtnPrple = new System.Windows.Forms.Button();
+            this.blueBtnRed = new System.Windows.Forms.Button();
+            this.blueBtnBrwn = new System.Windows.Forms.Button();
+            this.blueBtnGrn = new System.Windows.Forms.Button();
+            this.bluePath = new System.Windows.Forms.Label();
+            this.blueOrdrBtn1 = new System.Windows.Forms.Button();
+            this.blueOrdrBtn2 = new System.Windows.Forms.Button();
+            this.blueOrdrBtn3 = new System.Windows.Forms.Button();
+            this.blueOrdrBtn4 = new System.Windows.Forms.Button();
+            this.blackOrdrBtn4 = new System.Windows.Forms.Button();
+            this.blackOrdrBtn3 = new System.Windows.Forms.Button();
+            this.blackOrdrBtn2 = new System.Windows.Forms.Button();
+            this.blackOrdrBtn1 = new System.Windows.Forms.Button();
+            this.blackPath = new System.Windows.Forms.Label();
+            this.blackBtnGrn = new System.Windows.Forms.Button();
+            this.blackBtnBrwn = new System.Windows.Forms.Button();
+            this.blackBtnRed = new System.Windows.Forms.Button();
+            this.blackBtnPrple = new System.Windows.Forms.Button();
+            this.blackOrdrTxt = new System.Windows.Forms.Label();
+            this.end1 = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.end2 = new System.Windows.Forms.Panel();
             this.blue1.SuspendLayout();
             this.blue5.SuspendLayout();
             this.blue6.SuspendLayout();
@@ -116,6 +138,7 @@ namespace Assignment
             this.black7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.blue_acc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.black_acc)).BeginInit();
+            this.end1.SuspendLayout();
             this.SuspendLayout();
             // 
             // blue1
@@ -141,6 +164,7 @@ namespace Assignment
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(62, 217);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(48, 45);
@@ -286,15 +310,15 @@ namespace Assignment
             // purple
             // 
             this.purple.BackColor = System.Drawing.Color.White;
-            this.purple.Location = new System.Drawing.Point(339, 50);
+            this.purple.Location = new System.Drawing.Point(497, 176);
             this.purple.Name = "purple";
-            this.purple.Size = new System.Drawing.Size(45, 40);
+            this.purple.Size = new System.Drawing.Size(45, 45);
             this.purple.TabIndex = 16;
             // 
             // brown_l
             // 
             this.brown_l.BackColor = System.Drawing.Color.White;
-            this.brown_l.Location = new System.Drawing.Point(414, 545);
+            this.brown_l.Location = new System.Drawing.Point(336, 50);
             this.brown_l.Name = "brown_l";
             this.brown_l.Size = new System.Drawing.Size(42, 40);
             this.brown_l.TabIndex = 15;
@@ -382,6 +406,7 @@ namespace Assignment
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Desktop;
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(676, 505);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(49, 42);
@@ -431,7 +456,7 @@ namespace Assignment
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Purple;
-            this.button3.Location = new System.Drawing.Point(339, 12);
+            this.button3.Location = new System.Drawing.Point(497, 139);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(45, 39);
             this.button3.TabIndex = 19;
@@ -600,7 +625,7 @@ namespace Assignment
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.SaddleBrown;
-            this.button4.Location = new System.Drawing.Point(414, 582);
+            this.button4.Location = new System.Drawing.Point(336, 12);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(42, 39);
             this.button4.TabIndex = 20;
@@ -708,20 +733,269 @@ namespace Assignment
             this.richTextBox2.TabIndex = 26;
             this.richTextBox2.Text = "";
             // 
-            // blue_path
+            // blueOrdrTxt
             // 
-            this.blue_path.AutoSize = true;
-            this.blue_path.Location = new System.Drawing.Point(869, 50);
-            this.blue_path.Name = "blue_path";
-            this.blue_path.Size = new System.Drawing.Size(0, 17);
-            this.blue_path.TabIndex = 0;
+            this.blueOrdrTxt.AutoSize = true;
+            this.blueOrdrTxt.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blueOrdrTxt.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.blueOrdrTxt.Location = new System.Drawing.Point(819, 41);
+            this.blueOrdrTxt.Name = "blueOrdrTxt";
+            this.blueOrdrTxt.Size = new System.Drawing.Size(250, 26);
+            this.blueOrdrTxt.TabIndex = 27;
+            this.blueOrdrTxt.Text = "Order of the blue train:";
+            // 
+            // blueBtnPrple
+            // 
+            this.blueBtnPrple.BackColor = System.Drawing.Color.Purple;
+            this.blueBtnPrple.Location = new System.Drawing.Point(1095, 36);
+            this.blueBtnPrple.Name = "blueBtnPrple";
+            this.blueBtnPrple.Size = new System.Drawing.Size(45, 43);
+            this.blueBtnPrple.TabIndex = 28;
+            this.blueBtnPrple.UseVisualStyleBackColor = false;
+            this.blueBtnPrple.Click += new System.EventHandler(this.blueBtnPrple_Click);
+            // 
+            // blueBtnRed
+            // 
+            this.blueBtnRed.BackColor = System.Drawing.Color.Red;
+            this.blueBtnRed.Location = new System.Drawing.Point(1137, 36);
+            this.blueBtnRed.Name = "blueBtnRed";
+            this.blueBtnRed.Size = new System.Drawing.Size(43, 43);
+            this.blueBtnRed.TabIndex = 29;
+            this.blueBtnRed.UseVisualStyleBackColor = false;
+            this.blueBtnRed.Click += new System.EventHandler(this.blueBtnRed_Click);
+            // 
+            // blueBtnBrwn
+            // 
+            this.blueBtnBrwn.BackColor = System.Drawing.Color.SaddleBrown;
+            this.blueBtnBrwn.Location = new System.Drawing.Point(1176, 36);
+            this.blueBtnBrwn.Name = "blueBtnBrwn";
+            this.blueBtnBrwn.Size = new System.Drawing.Size(42, 43);
+            this.blueBtnBrwn.TabIndex = 30;
+            this.blueBtnBrwn.UseVisualStyleBackColor = false;
+            this.blueBtnBrwn.Click += new System.EventHandler(this.blueBtnBrwn_Click);
+            // 
+            // blueBtnGrn
+            // 
+            this.blueBtnGrn.BackColor = System.Drawing.Color.Green;
+            this.blueBtnGrn.Location = new System.Drawing.Point(1215, 36);
+            this.blueBtnGrn.Name = "blueBtnGrn";
+            this.blueBtnGrn.Size = new System.Drawing.Size(42, 43);
+            this.blueBtnGrn.TabIndex = 31;
+            this.blueBtnGrn.UseVisualStyleBackColor = false;
+            this.blueBtnGrn.Click += new System.EventHandler(this.blueBtnGrn_Click);
+            // 
+            // bluePath
+            // 
+            this.bluePath.AutoSize = true;
+            this.bluePath.Location = new System.Drawing.Point(821, 99);
+            this.bluePath.Name = "bluePath";
+            this.bluePath.Size = new System.Drawing.Size(0, 17);
+            this.bluePath.TabIndex = 33;
+            // 
+            // blueOrdrBtn1
+            // 
+            this.blueOrdrBtn1.BackColor = System.Drawing.Color.GhostWhite;
+            this.blueOrdrBtn1.Enabled = false;
+            this.blueOrdrBtn1.Location = new System.Drawing.Point(1095, 36);
+            this.blueOrdrBtn1.Name = "blueOrdrBtn1";
+            this.blueOrdrBtn1.Size = new System.Drawing.Size(45, 43);
+            this.blueOrdrBtn1.TabIndex = 34;
+            this.blueOrdrBtn1.UseVisualStyleBackColor = false;
+            this.blueOrdrBtn1.Visible = false;
+            // 
+            // blueOrdrBtn2
+            // 
+            this.blueOrdrBtn2.BackColor = System.Drawing.Color.GhostWhite;
+            this.blueOrdrBtn2.Enabled = false;
+            this.blueOrdrBtn2.Location = new System.Drawing.Point(1135, 36);
+            this.blueOrdrBtn2.Name = "blueOrdrBtn2";
+            this.blueOrdrBtn2.Size = new System.Drawing.Size(45, 43);
+            this.blueOrdrBtn2.TabIndex = 35;
+            this.blueOrdrBtn2.UseVisualStyleBackColor = false;
+            this.blueOrdrBtn2.Visible = false;
+            // 
+            // blueOrdrBtn3
+            // 
+            this.blueOrdrBtn3.BackColor = System.Drawing.Color.GhostWhite;
+            this.blueOrdrBtn3.Enabled = false;
+            this.blueOrdrBtn3.Location = new System.Drawing.Point(1173, 36);
+            this.blueOrdrBtn3.Name = "blueOrdrBtn3";
+            this.blueOrdrBtn3.Size = new System.Drawing.Size(45, 43);
+            this.blueOrdrBtn3.TabIndex = 36;
+            this.blueOrdrBtn3.UseVisualStyleBackColor = false;
+            this.blueOrdrBtn3.Visible = false;
+            this.blueOrdrBtn3.Click += new System.EventHandler(this.blueOrdrBtn3_Click);
+            // 
+            // blueOrdrBtn4
+            // 
+            this.blueOrdrBtn4.BackColor = System.Drawing.Color.GhostWhite;
+            this.blueOrdrBtn4.Enabled = false;
+            this.blueOrdrBtn4.Location = new System.Drawing.Point(1215, 36);
+            this.blueOrdrBtn4.Name = "blueOrdrBtn4";
+            this.blueOrdrBtn4.Size = new System.Drawing.Size(45, 43);
+            this.blueOrdrBtn4.TabIndex = 37;
+            this.blueOrdrBtn4.UseVisualStyleBackColor = false;
+            this.blueOrdrBtn4.Visible = false;
+            // 
+            // blackOrdrBtn4
+            // 
+            this.blackOrdrBtn4.BackColor = System.Drawing.Color.GhostWhite;
+            this.blackOrdrBtn4.Enabled = false;
+            this.blackOrdrBtn4.Location = new System.Drawing.Point(1215, 124);
+            this.blackOrdrBtn4.Name = "blackOrdrBtn4";
+            this.blackOrdrBtn4.Size = new System.Drawing.Size(45, 43);
+            this.blackOrdrBtn4.TabIndex = 47;
+            this.blackOrdrBtn4.UseVisualStyleBackColor = false;
+            this.blackOrdrBtn4.Visible = false;
+            this.blackOrdrBtn4.Click += new System.EventHandler(this.blackOrdrBtn4_Click);
+            // 
+            // blackOrdrBtn3
+            // 
+            this.blackOrdrBtn3.BackColor = System.Drawing.Color.GhostWhite;
+            this.blackOrdrBtn3.Enabled = false;
+            this.blackOrdrBtn3.Location = new System.Drawing.Point(1173, 124);
+            this.blackOrdrBtn3.Name = "blackOrdrBtn3";
+            this.blackOrdrBtn3.Size = new System.Drawing.Size(45, 43);
+            this.blackOrdrBtn3.TabIndex = 46;
+            this.blackOrdrBtn3.UseVisualStyleBackColor = false;
+            this.blackOrdrBtn3.Visible = false;
+            // 
+            // blackOrdrBtn2
+            // 
+            this.blackOrdrBtn2.BackColor = System.Drawing.Color.GhostWhite;
+            this.blackOrdrBtn2.Enabled = false;
+            this.blackOrdrBtn2.Location = new System.Drawing.Point(1135, 124);
+            this.blackOrdrBtn2.Name = "blackOrdrBtn2";
+            this.blackOrdrBtn2.Size = new System.Drawing.Size(45, 43);
+            this.blackOrdrBtn2.TabIndex = 45;
+            this.blackOrdrBtn2.UseVisualStyleBackColor = false;
+            this.blackOrdrBtn2.Visible = false;
+            // 
+            // blackOrdrBtn1
+            // 
+            this.blackOrdrBtn1.BackColor = System.Drawing.Color.GhostWhite;
+            this.blackOrdrBtn1.Enabled = false;
+            this.blackOrdrBtn1.Location = new System.Drawing.Point(1095, 124);
+            this.blackOrdrBtn1.Name = "blackOrdrBtn1";
+            this.blackOrdrBtn1.Size = new System.Drawing.Size(45, 43);
+            this.blackOrdrBtn1.TabIndex = 44;
+            this.blackOrdrBtn1.UseVisualStyleBackColor = false;
+            this.blackOrdrBtn1.Visible = false;
+            // 
+            // blackPath
+            // 
+            this.blackPath.AutoSize = true;
+            this.blackPath.Location = new System.Drawing.Point(821, 187);
+            this.blackPath.Name = "blackPath";
+            this.blackPath.Size = new System.Drawing.Size(0, 17);
+            this.blackPath.TabIndex = 43;
+            // 
+            // blackBtnGrn
+            // 
+            this.blackBtnGrn.BackColor = System.Drawing.Color.Green;
+            this.blackBtnGrn.Location = new System.Drawing.Point(1215, 124);
+            this.blackBtnGrn.Name = "blackBtnGrn";
+            this.blackBtnGrn.Size = new System.Drawing.Size(42, 43);
+            this.blackBtnGrn.TabIndex = 42;
+            this.blackBtnGrn.UseVisualStyleBackColor = false;
+            this.blackBtnGrn.Click += new System.EventHandler(this.blackBtnGrn_Click);
+            // 
+            // blackBtnBrwn
+            // 
+            this.blackBtnBrwn.BackColor = System.Drawing.Color.SaddleBrown;
+            this.blackBtnBrwn.Location = new System.Drawing.Point(1176, 124);
+            this.blackBtnBrwn.Name = "blackBtnBrwn";
+            this.blackBtnBrwn.Size = new System.Drawing.Size(42, 43);
+            this.blackBtnBrwn.TabIndex = 41;
+            this.blackBtnBrwn.UseVisualStyleBackColor = false;
+            this.blackBtnBrwn.Click += new System.EventHandler(this.blackBtnBrwn_Click);
+            // 
+            // blackBtnRed
+            // 
+            this.blackBtnRed.BackColor = System.Drawing.Color.Red;
+            this.blackBtnRed.Location = new System.Drawing.Point(1137, 124);
+            this.blackBtnRed.Name = "blackBtnRed";
+            this.blackBtnRed.Size = new System.Drawing.Size(43, 43);
+            this.blackBtnRed.TabIndex = 40;
+            this.blackBtnRed.UseVisualStyleBackColor = false;
+            this.blackBtnRed.Click += new System.EventHandler(this.blackBtnRed_Click);
+            // 
+            // blackBtnPrple
+            // 
+            this.blackBtnPrple.BackColor = System.Drawing.Color.Purple;
+            this.blackBtnPrple.Location = new System.Drawing.Point(1095, 124);
+            this.blackBtnPrple.Name = "blackBtnPrple";
+            this.blackBtnPrple.Size = new System.Drawing.Size(45, 43);
+            this.blackBtnPrple.TabIndex = 39;
+            this.blackBtnPrple.UseVisualStyleBackColor = false;
+            this.blackBtnPrple.Click += new System.EventHandler(this.blackBtnPrple_Click);
+            // 
+            // blackOrdrTxt
+            // 
+            this.blackOrdrTxt.AutoSize = true;
+            this.blackOrdrTxt.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blackOrdrTxt.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.blackOrdrTxt.Location = new System.Drawing.Point(810, 129);
+            this.blackOrdrTxt.Name = "blackOrdrTxt";
+            this.blackOrdrTxt.Size = new System.Drawing.Size(259, 26);
+            this.blackOrdrTxt.TabIndex = 38;
+            this.blackOrdrTxt.Text = "Order of the black train:";
+            // 
+            // end1
+            // 
+            this.end1.BackColor = System.Drawing.Color.White;
+            this.end1.Controls.Add(this.label24);
+            this.end1.Location = new System.Drawing.Point(837, 582);
+            this.end1.Name = "end1";
+            this.end1.Size = new System.Drawing.Size(303, 49);
+            this.end1.TabIndex = 6;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label24.Location = new System.Drawing.Point(138, 10);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(27, 20);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "23";
+            // 
+            // end2
+            // 
+            this.end2.BackColor = System.Drawing.Color.White;
+            this.end2.Location = new System.Drawing.Point(1137, 582);
+            this.end2.Name = "end2";
+            this.end2.Size = new System.Drawing.Size(92, 49);
+            this.end2.TabIndex = 11;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1424, 765);
-            this.Controls.Add(this.blue_path);
+            this.Controls.Add(this.end2);
+            this.Controls.Add(this.end1);
+            this.Controls.Add(this.blackOrdrBtn4);
+            this.Controls.Add(this.blackOrdrBtn3);
+            this.Controls.Add(this.blackOrdrBtn2);
+            this.Controls.Add(this.blackOrdrBtn1);
+            this.Controls.Add(this.blackPath);
+            this.Controls.Add(this.blackBtnGrn);
+            this.Controls.Add(this.blackBtnBrwn);
+            this.Controls.Add(this.blackBtnRed);
+            this.Controls.Add(this.blackBtnPrple);
+            this.Controls.Add(this.blackOrdrTxt);
+            this.Controls.Add(this.blueOrdrBtn4);
+            this.Controls.Add(this.blueOrdrBtn3);
+            this.Controls.Add(this.blueOrdrBtn2);
+            this.Controls.Add(this.blueOrdrBtn1);
+            this.Controls.Add(this.bluePath);
+            this.Controls.Add(this.blueBtnGrn);
+            this.Controls.Add(this.blueBtnBrwn);
+            this.Controls.Add(this.blueBtnRed);
+            this.Controls.Add(this.blueBtnPrple);
+            this.Controls.Add(this.blueOrdrTxt);
             this.Controls.Add(this.green);
             this.Controls.Add(this.red);
             this.Controls.Add(this.blueBlack);
@@ -810,6 +1084,8 @@ namespace Assignment
             this.black7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.blue_acc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.black_acc)).EndInit();
+            this.end1.ResumeLayout(false);
+            this.end1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -877,7 +1153,29 @@ namespace Assignment
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label blue_path;
+        private System.Windows.Forms.Label blueOrdrTxt;
+        private System.Windows.Forms.Button blueBtnPrple;
+        private System.Windows.Forms.Button blueBtnRed;
+        private System.Windows.Forms.Button blueBtnBrwn;
+        private System.Windows.Forms.Button blueBtnGrn;
+        private System.Windows.Forms.Label bluePath;
+        private System.Windows.Forms.Button blueOrdrBtn1;
+        private System.Windows.Forms.Button blueOrdrBtn2;
+        private System.Windows.Forms.Button blueOrdrBtn3;
+        private System.Windows.Forms.Button blueOrdrBtn4;
+        private System.Windows.Forms.Button blackOrdrBtn4;
+        private System.Windows.Forms.Button blackOrdrBtn3;
+        private System.Windows.Forms.Button blackOrdrBtn2;
+        private System.Windows.Forms.Button blackOrdrBtn1;
+        private System.Windows.Forms.Label blackPath;
+        private System.Windows.Forms.Button blackBtnGrn;
+        private System.Windows.Forms.Button blackBtnBrwn;
+        private System.Windows.Forms.Button blackBtnRed;
+        private System.Windows.Forms.Button blackBtnPrple;
+        private System.Windows.Forms.Label blackOrdrTxt;
+        private System.Windows.Forms.Panel end1;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Panel end2;
     }
 }
 

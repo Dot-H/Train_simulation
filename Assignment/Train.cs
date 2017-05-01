@@ -15,6 +15,7 @@ namespace Assignment
         private int delay;
         private bool is_blue;
         private Stack<int> path;
+        private int destination;
         private Queue<int> order;
 
         public Train(Color colour, Graph g, bool is_blue = true, int delay = 100)
@@ -36,6 +37,7 @@ namespace Assignment
                 this.Is_blue = t.Is_blue;
                 this.path = t.Path;
                 this.Order = t.Order;
+                this.Destination = t.Destination;
             }
         }
 
@@ -59,7 +61,8 @@ namespace Assignment
 
         }
 
-#region getters_setters
+    #region getters_setters
+
         public List<Color> Colours
         {
             get
@@ -149,6 +152,22 @@ namespace Assignment
                     order = value;
             }
         }
+
+        public int Destination
+        {
+            get
+            {
+                lock (this)
+                    return destination;
+            }
+
+            set
+            {
+                lock (this)
+                    destination = value;
+            }
+        }
         #endregion
+
     }
 }

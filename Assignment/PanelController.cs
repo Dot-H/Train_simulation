@@ -23,7 +23,7 @@ namespace Assignment
         private bool locked = true;
         private double lenght;
         private int nb;
-        private Train train;
+        private Train train, train_origin;
         private Buffer buffer;
         
         public PanelController(Panel panel, Button btn, int nb, Train train, Buffer buffer, bool westEast = true, int xDelta = 10, bool horizontal = true)
@@ -43,6 +43,7 @@ namespace Assignment
             get_origin();
             get_length();
             this.train = train;
+            this.train_origin = train;
             this.buffer = buffer;
 
             train.Colours[0] = Color.White;
@@ -67,15 +68,13 @@ namespace Assignment
         {
             this.locked = false;
             this.btn.Enabled = false;
-            train.Order.Enqueue(5);
-            train.Order.Enqueue(15);
-            train.Order.Enqueue(20);
-            train.Order.Enqueue(10);
             lock (this)
             {
+                train = train_origin;
                 int end = train.Order.Dequeue();
 
-                train.Path = train.G.backtracking(0, end, train.Order);
+                train.Path = train.G.backtracking(nb, end);
+                train.Destination = train.Path.ElementAt<int>(train.Path.Count - 1);
                 buffer.write_path(train);
 
                 while (locked || !buffer.empty[nb]);

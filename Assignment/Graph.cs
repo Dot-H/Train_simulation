@@ -61,11 +61,11 @@ namespace Assignment
                     graph[i, j] = tab[i, j];
         }
 
-        public Stack<int> backtracking(int start, int end, Queue<int> forbidden)
+        public Stack<int> backtracking(int start, int end)
         {
             Stack<int> path = new Stack<int>();
             bool[] visited = new bool[len];
-            backtracking_rec(start, end, visited, forbidden, ref path);
+            backtracking_rec(start, end, visited, ref path);
             path.Pop();
             return path;
         }
@@ -85,7 +85,7 @@ namespace Assignment
             return false;
         }
 
-        private bool backtracking_rec(int start, int end, bool[] visited, Queue<int> forbidden, ref Stack<int> path)
+        private bool backtracking_rec(int start, int end, bool[] visited, ref Stack<int> path)
         {
             visited[start] = true;
             if (start == end)
@@ -95,8 +95,8 @@ namespace Assignment
             }
             for (int i = 0; i < len; i++)
             {
-                if (graph[start, i] == 1 && !visited[i] && !find(forbidden, i) && 
-                    backtracking_rec(i, end, visited, forbidden, ref path))
+                if (graph[start, i] == 1 && !visited[i] && 
+                    backtracking_rec(i, end, visited, ref path))
                 {
                     path.Push(start);
                     return true;

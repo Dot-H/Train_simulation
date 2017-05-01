@@ -22,39 +22,44 @@ namespace Assignment
         public setAccValueDelegate_blue setAccValueCallback_blue;
         public setAccValueDelegate_black setAccValueCallback_black;
 
+        private int[] train_order_blue, train_order_black;
+        private Button[] button_order_blue, button_order_black;
+        private int order_blue, order_black;
+
         public Form1()
         {
+
             InitializeComponent();
 
             #region GRAPH_SETUP
             int graph_len = 27;
             Graph graph = new Graph(graph_len);
 
-            graph.setNext(0, new int[] { 1, 4, 21}); // 1 4
+            graph.setNext(0, new int[] { 1, 4 }); // 1 4
             graph.setNext(1, new int[] { 2 });
             graph.setNext(2, new int[] { 3 });
             graph.setNext(3, new int[] { 7 });
             graph.setNext(4, new int[] { 5 });
             graph.setNext(5, new int[] { 6 });
             graph.setNext(6, new int[] { 3 });
-            graph.setNext(7, new int[] { 8 });
+            graph.setNext(7, new int[] { 8, 23 });
             graph.setNext(8, new int[] { 9, 22}); 
             graph.setNext(9, new int[] { 10 });
             graph.setNext(10, new int[] { 11 });
             graph.setNext(11, new int[] { 12 });
             graph.setNext(12, new int[] { 0 });
-            graph.setNext(13, new int[] { 14, 22 }); 
+            graph.setNext(13, new int[] { 14 }); 
             graph.setNext(14, new int[] { 15 });
             graph.setNext(15, new int[] { 16 });
             graph.setNext(16, new int[] { 17 });
             graph.setNext(17, new int[] { 18 });
-            graph.setNext(18, new int[] { 19, 21});
+            graph.setNext(18, new int[] { 19, 21 });
             graph.setNext(19, new int[] { 20 });
             graph.setNext(20, new int[] { 13 });
-            graph.setNext(21, new int[] { 1, 18});
-            graph.setNext(22, new int[] { 14, 9});
-            graph.setNext(23, new int[] { 16 });
-            graph.setNext(24, new int[] { 15 });
+            graph.setNext(21, new int[] { 1});
+            graph.setNext(22, new int[] { 14});
+            graph.setNext(23, new int[] { 16, 24 });
+            graph.setNext(24, new int[] { 24 });
             graph.setNext(25, new int[] { 10 });
             graph.setNext(26, new int[] { 11 });
 
@@ -63,18 +68,35 @@ namespace Assignment
 
             buffer = new Buffer(graph_len, this);
 
+            #region TRAIN_SETUP
+
             train1 = new Train(Color.Blue, graph);
             train2 = new Train(Color.Black, graph2, false);
             train_init = new Train(Color.White, graph);
+
             this.setAccValueCallback_blue += new setAccValueDelegate_blue(train1.set_acc);
-            buffer.setDestValueCallback_blue = new Buffer.setDestValueDelegate_blue(set_textbox);
+            this.setAccValueCallback_black += new setAccValueDelegate_black(train2.set_acc);
+
+            buffer.setDestValueCallback_blue = new Buffer.setDestValueDelegate_blue(set_textbox_blue);
+            buffer.setDestValueCallback_black = new Buffer.setDestValueDelegate_black(set_textbox_black);
+
+            train_order_blue = new int[] { 2, 20, 5, 10 };
+            train_order_black = new int[] { 2, 20, 5, 10 };
+
+            button_order_blue = new Button[] { blueOrdrBtn1, blueOrdrBtn2, blueOrdrBtn3, blueOrdrBtn4 };
+            button_order_black = new Button[] { blackOrdrBtn1, blackOrdrBtn2, blackOrdrBtn3, blackOrdrBtn4 };
+
+            order_blue = 0;
+            order_black = 0;
+
+            #endregion
 
             #region PANELS_SETUP
 
             PanelController p1 = new PanelController(blue1, button1, 0, train1, buffer);
             PanelController p2 = new PanelController(black1, button2, 13, train2, buffer, false);
-            Locomotives p3 = new Locomotives(purple, button3, 5, Color.Purple, buffer);
-            Locomotives p4 = new Locomotives(brown_l, button4, 15, Color.Brown, buffer);
+            Locomotives p3 = new Locomotives(purple, button3, 2, Color.Purple, buffer);
+            Locomotives p4 = new Locomotives(brown_l, button4, 5, Color.Brown, buffer);
             Locomotives p5 = new Locomotives(red, button5, 20, Color.Red, buffer);
             Locomotives p6 = new Locomotives(green, button6, 10, Color.Green, buffer);
 
@@ -99,8 +121,11 @@ namespace Assignment
             WaitPanel w18 = new WaitPanel(black7, train_init, 19, buffer);
             WaitPanel w19 = new WaitPanel(black8, train_init, 20, buffer, true, 10, false);
 
-            WaitPanel w20 = new WaitPanel(blackBlue, train_init, 21, buffer, true, 10, false);
+            WaitPanel w20 = new WaitPanel(blackBlue, train_init, 21, buffer, false, 10, false);
             WaitPanel w21 = new WaitPanel(blueBlack, train_init, 22, buffer, false, 10, false);
+
+            WaitPanel w22 = new WaitPanel(end1, train_init, 23, buffer);
+            WaitPanel w23 = new WaitPanel(end2, train_init, 24, buffer);
             #endregion
 
             #region THREAD_SETUP
@@ -138,6 +163,8 @@ namespace Assignment
             Thread wait19 = new Thread(new ThreadStart(w19.Start));
             Thread wait20 = new Thread(new ThreadStart(w20.Start));
             Thread wait21 = new Thread(new ThreadStart(w21.Start));
+            Thread wait22 = new Thread(new ThreadStart(w22.Start));
+            Thread wait23 = new Thread(new ThreadStart(w23.Start));
 
             Thread bufThread = new Thread(new ThreadStart(buffer.Start));
 
@@ -179,6 +206,8 @@ namespace Assignment
             wait19.Start();
             wait20.Start();
             wait21.Start();
+            wait22.Start();
+            wait23.Start();
            #endregion
         }
 
@@ -207,14 +236,162 @@ namespace Assignment
 
         }
 
+        #region ORDER_BTN
+
+        private void blueBtnPrple_Click(object sender, EventArgs e)
+        {
+            train1.Order.Enqueue(train_order_blue[0]);
+            blueBtnPrple.Hide();
+            blueBtnPrple.Enabled = false;
+            button_order_blue[order_blue].BackColor = Color.Purple;
+
+            if (train1.Order.Count == 4)
+                blue_order_chosen();
+
+            order_blue++;
+        }
+
+        private void blueBtnRed_Click(object sender, EventArgs e)
+        {
+            train1.Order.Enqueue(train_order_blue[1]);
+            blueBtnRed.Hide();
+            blueBtnRed.Enabled = false;
+            button_order_blue[order_blue].BackColor = Color.Red;
+
+            if (train1.Order.Count == 4)
+                blue_order_chosen();
+
+            order_blue++;
+        }
+
+        private void blueBtnBrwn_Click(object sender, EventArgs e)
+        {
+            train1.Order.Enqueue(train_order_blue[2]);
+            blueBtnBrwn.Hide();
+            blueBtnBrwn.Enabled = false;
+            button_order_blue[order_blue].BackColor = Color.Brown;
+
+            if (train1.Order.Count == 4)
+                blue_order_chosen();
+
+            order_blue++;
+        }
+
+        private void blueBtnGrn_Click(object sender, EventArgs e)
+        {
+            train1.Order.Enqueue(train_order_blue[3]);
+            blueBtnGrn.Hide();
+            blueBtnGrn.Enabled = false;
+            button_order_blue[order_blue].BackColor = Color.Green;
+
+            if (train1.Order.Count == 4)
+                blue_order_chosen();
+
+            order_blue++;
+        }
+
+        private void blueOrdrBtn3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void blackOrdrBtn4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void blackBtnPrple_Click(object sender, EventArgs e)
+        {
+            train2.Order.Enqueue(train_order_black[0]);
+            blackBtnPrple.Hide();
+            blackBtnPrple.Enabled = false;
+            button_order_black[order_black].BackColor = Color.Purple;
+
+            if (train2.Order.Count == 4)
+                black_order_chosen();
+
+            order_black++;
+        }
+
+        private void blackBtnRed_Click(object sender, EventArgs e)
+        {
+            train2.Order.Enqueue(train_order_black[1]);
+            blackBtnRed.Hide();
+            blackBtnRed.Enabled = false;
+            button_order_black[order_black].BackColor = Color.Red;
+
+            if (train2.Order.Count == 4)
+                black_order_chosen();
+
+            order_black++;
+        }
+
+        private void blackBtnGrn_Click(object sender, EventArgs e)
+        {
+            train2.Order.Enqueue(train_order_black[3]);
+            blackBtnGrn.Hide();
+            blackBtnGrn.Enabled = false;
+            button_order_black[order_black].BackColor = Color.Green;
+
+            if (train2.Order.Count == 4)
+                black_order_chosen();
+
+            order_black++;
+        }
+
+        private void blackBtnBrwn_Click(object sender, EventArgs e)
+        {
+            train2.Order.Enqueue(train_order_black[2]);
+            blackBtnBrwn.Hide();
+            blackBtnBrwn.Enabled = false;
+            button_order_black[order_black].BackColor = Color.Brown;
+
+            if (train2.Order.Count == 4)
+                black_order_chosen();
+
+            order_black++;
+        }
+
+        private void blue_order_chosen()
+        {
+            train1.Order.Enqueue(24);
+
+            blueOrdrBtn1.Show();
+            blueOrdrBtn2.Show();
+            blueOrdrBtn3.Show();
+            blueOrdrBtn4.Show();
+
+            button1.Enabled = true;
+        }
+
+        private void black_order_chosen()
+        {
+            train2.Order.Enqueue(24);
+
+            blackOrdrBtn1.Show();
+            blackOrdrBtn2.Show();
+            blackOrdrBtn3.Show();
+            blackOrdrBtn4.Show();
+
+            button2.Enabled = true;
+        }
+
+        #endregion
+
+        private void set_textbox_blue(string txt)
+        {
+           bluePath.Invoke(new Action(() => bluePath.Text = txt));
+        }
+
+        private void set_textbox_black(string txt)
+        {
+            blackPath.Invoke(new Action(() => blackPath.Text = txt));
+        }
+
         private void blue_acc_Scroll(object sender, EventArgs e)
         {
             setAccValueCallback_blue(blue_acc.Value);
         }
 
-        private void set_textbox(string txt)
-        {
-            blue_path.Invoke(new Action(() => blue_path.Text = txt));
-        }
     }
 }

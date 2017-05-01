@@ -17,7 +17,10 @@ namespace Assignment
         public bool[] empty;
 
         public delegate void setDestValueDelegate_blue(string txt);
+        public delegate void setDestValueDelegate_black(string txt);
+
         public setDestValueDelegate_blue setDestValueCallback_blue;
+        public setDestValueDelegate_black setDestValueCallback_black;
 
         public Buffer(int len, Form1 form1)
         {
@@ -49,23 +52,15 @@ namespace Assignment
                 else
                     form1.setAccValueCallback_black += train.set_acc;
 
-                if ((l = get_loco(nb, train)) != null)// Check either there is a locomotive to pickup
+                if (train.Destination == nb && (l = get_loco(nb, train)) != null)// Check either there is a locomotive to pickup
                 {
                     train.Colours.Add(l.Item1);
                     if (train.Order.Count > 0)
                     {
                         int end = train.Order.Dequeue();
-                        train.Path = train.G.backtracking(nb, end, train.Order);
+                        train.Path = train.G.backtracking(nb, end);
+                        train.Destination = train.Path.ElementAt<int>(train.Path.Count - 1);
                     }
-                    /*
-                    if (train.Colours.Count == 3)
-                    {
-                        if (train.Colours[1].Equals(Color.Purple) || train.Colours[1].Equals(Color.Brown))
-                            black_to_blue(train.G);
-                        else
-                            blue_to_black(train.G);
-                    }
-                    */
                 }
 
                 Monitor.PulseAll(this);
@@ -119,7 +114,7 @@ namespace Assignment
                 while ((next = train.G.getNext(train, empty)) == -1)
                     Monitor.Wait(this);
 
-                write_path(train);
+                write_path(train); 
                 return next;
             }
         }
@@ -145,10 +140,23 @@ namespace Assignment
                 return false;
             }
         }
-        
+
         public void write_path(Train train)
         {
+            if (train.Is_blue)
+                write_path_blue(train);
+            else
+                write_path_black(train);
+        }
+        
+        private void write_path_blue(Train train)
+        {
             setDestValueCallback_blue(train.path_string());
+        }
+
+        private void write_path_black(Train train)
+        {
+            setDestValueCallback_black(train.path_string());
         }
 
         public void Start()
