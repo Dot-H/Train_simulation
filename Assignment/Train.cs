@@ -54,7 +54,7 @@ namespace Assignment
             for (int i = 0; i < Path.Count - 1; i++)
                 res += Path.ElementAt<int>(i) + " -> ";
 
-            if (Path.Count > 0)
+            if (Path.Count > 0 && Path.ElementAt<int>(Path.Count - 1) != 24)
                 res += Path.ElementAt<int>(Path.Count - 1);
 
             return res;

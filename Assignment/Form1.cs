@@ -26,6 +26,10 @@ namespace Assignment
         private Button[] button_order_blue, button_order_black;
         private int order_blue, order_black;
 
+        private Panel[] panel_array;
+        private List<int> old_panels_blue;
+        private List<int> old_panels_black;
+
         public Form1()
         {
 
@@ -72,13 +76,16 @@ namespace Assignment
 
             train1 = new Train(Color.Blue, graph);
             train2 = new Train(Color.Black, graph2, false);
-            train_init = new Train(Color.White, graph);
+            train_init = new Train(Color.Transparent, graph);
 
             this.setAccValueCallback_blue += new setAccValueDelegate_blue(train1.set_acc);
             this.setAccValueCallback_black += new setAccValueDelegate_black(train2.set_acc);
 
-            buffer.setDestValueCallback_blue = new Buffer.setDestValueDelegate_blue(set_textbox_blue);
-            buffer.setDestValueCallback_black = new Buffer.setDestValueDelegate_black(set_textbox_black);
+            buffer.setDestValueCallback_blue = new Buffer.setDestValueDelegate_blue(set_panels_blue);
+            buffer.setDestValueCallback_black = new Buffer.setDestValueDelegate_black(set_panels_black);
+
+            buffer.rmvDestColorCallback_blue = new Buffer.rmvDestColorDelegate_blue(rmv_panels_blue);
+            buffer.rmvDestColorCallback_black = new Buffer.rmvDestColorDelegate_black(rmv_panels_black);
 
             train_order_blue = new int[] { 2, 20, 5, 10 };
             train_order_black = new int[] { 2, 20, 5, 10 };
@@ -92,6 +99,11 @@ namespace Assignment
             #endregion
 
             #region PANELS_SETUP
+            panel_array = new Panel[] { blue1, blue2, blue3, blue4, blue5, blue6, blue7, blue8, blue9, blue10, blue11, blue12, blue13,
+                                        black1, black2, black3, black4, black5, black6, black7, black8, blackBlue, blueBlack, end1, end2 };
+            old_panels_blue = new List<int>();
+            old_panels_black = new List<int>();
+            
 
             PanelController p1 = new PanelController(blue1, button1, 0, train1, buffer);
             PanelController p2 = new PanelController(black1, button2, 13, train2, buffer, false);
@@ -361,6 +373,8 @@ namespace Assignment
             blueOrdrBtn3.Show();
             blueOrdrBtn4.Show();
 
+            blueOrdrTxt.Text = "Order of the blue train:";
+
             button1.Enabled = true;
         }
 
@@ -373,20 +387,58 @@ namespace Assignment
             blackOrdrBtn3.Show();
             blackOrdrBtn4.Show();
 
+            blackOrdrTxt.Text = "Order of the black train:";
+
             button2.Enabled = true;
         }
 
         #endregion
 
-        private void set_textbox_blue(string txt)
+        #region path_drawing
+
+        private void set_panels_blue(int nb)
         {
-           bluePath.Invoke(new Action(() => bluePath.Text = txt));
+           if (panel_array[nb].BackColor == Color.LightGray)
+               panel_array[nb].Invoke(new Action(() => panel_array[nb].BackColor = Color.Thistle));
+           else
+               panel_array[nb].Invoke(new Action(() => panel_array[nb].BackColor = Color.AliceBlue));
+           old_panels_blue.Add(nb);
         }
 
-        private void set_textbox_black(string txt)
+        private void set_panels_black(int nb)
         {
-            blackPath.Invoke(new Action(() => blackPath.Text = txt));
+            if (panel_array[nb].BackColor == Color.AliceBlue)
+                panel_array[nb].Invoke(new Action(() => panel_array[nb].BackColor = Color.Thistle));
+            else
+                panel_array[nb].Invoke(new Action(() => panel_array[nb].BackColor = Color.LightGray));
+            old_panels_black.Add(nb);
         }
+
+        private void rmv_panels_blue()
+        {
+            foreach (int nb in old_panels_blue)
+            {
+                if (panel_array[nb].BackColor == Color.Thistle)
+                    panel_array[nb].Invoke(new Action(() => panel_array[nb].BackColor = Color.LightGray));
+                else
+                    panel_array[nb].Invoke(new Action(() => panel_array[nb].BackColor = Color.White));
+            }
+            old_panels_blue = new List<int>();
+        }
+
+        private void rmv_panels_black()
+        {
+            foreach (int nb in old_panels_black)
+            {
+                if (panel_array[nb].BackColor == Color.Thistle)
+                    panel_array[nb].Invoke(new Action(() => panel_array[nb].BackColor = Color.AliceBlue));
+                else
+                    panel_array[nb].Invoke(new Action(() => panel_array[nb].BackColor = Color.White));
+            }
+            old_panels_black = new List<int>();
+        }
+
+        #endregion
 
         private void blue_acc_Scroll(object sender, EventArgs e)
         {

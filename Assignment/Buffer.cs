@@ -16,11 +16,17 @@ namespace Assignment
         private Form1 form1;
         public bool[] empty;
 
-        public delegate void setDestValueDelegate_blue(string txt);
-        public delegate void setDestValueDelegate_black(string txt);
+        public delegate void setDestValueDelegate_blue(int nb);
+        public delegate void setDestValueDelegate_black(int nb);
+
+        public delegate void rmvDestColorDelegate_blue();
+        public delegate void rmvDestColorDelegate_black();
 
         public setDestValueDelegate_blue setDestValueCallback_blue;
         public setDestValueDelegate_black setDestValueCallback_black;
+
+        public rmvDestColorDelegate_blue rmvDestColorCallback_blue;
+        public rmvDestColorDelegate_black rmvDestColorCallback_black;
 
         public Buffer(int len, Form1 form1)
         {
@@ -110,11 +116,11 @@ namespace Assignment
         {
             lock (this)
             {
+                write_path(train); 
                 int next;
                 while ((next = train.G.getNext(train, empty)) == -1)
                     Monitor.Wait(this);
 
-                write_path(train); 
                 return next;
             }
         }
@@ -144,19 +150,37 @@ namespace Assignment
         public void write_path(Train train)
         {
             if (train.Is_blue)
+            {
+                rmv_path_blue(train);
                 write_path_blue(train);
+            }
             else
+            {
+                rmv_path_black(train);
                 write_path_black(train);
+            }
         }
         
         private void write_path_blue(Train train)
         {
-            setDestValueCallback_blue(train.path_string());
+            foreach (int nb in train.Path)
+                setDestValueCallback_blue(nb);
         }
 
         private void write_path_black(Train train)
         {
-            setDestValueCallback_black(train.path_string());
+            foreach (int nb in train.Path)
+                setDestValueCallback_black(nb);
+        }
+
+        private void rmv_path_blue(Train train)
+        {
+            rmvDestColorCallback_blue();
+        }
+
+        private void rmv_path_black(Train train)
+        {
+            rmvDestColorCallback_black();
         }
 
         public void Start()

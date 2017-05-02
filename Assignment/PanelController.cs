@@ -70,7 +70,7 @@ namespace Assignment
             this.btn.Enabled = false;
             lock (this)
             {
-                train = train_origin;
+                train = new Train(train_origin);
                 int end = train.Order.Dequeue();
 
                 train.Path = train.G.backtracking(nb, end);
@@ -131,7 +131,7 @@ namespace Assignment
         private void remove_colours()
         {
             for (int i = 0; i < train.Colours.Count; i++)
-                train.Colours[i] = Color.White;
+                train.Colours[i] = Color.Transparent;
         }
 
         public void Start()
