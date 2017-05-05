@@ -701,6 +701,7 @@ namespace Assignment
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Closing += new System.ComponentModel.CancelEventHandler(this.Form1_Closing);
             ((System.ComponentModel.ISupportInitialize)(this.blue_acc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.black_acc)).EndInit();
             this.ResumeLayout(false);

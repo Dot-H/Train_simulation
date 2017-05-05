@@ -440,6 +440,10 @@ namespace Assignment
 
         #endregion
 
+        private void Form1_Closing(object sender, CancelEventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
+        }
         private void blue_acc_Scroll(object sender, EventArgs e)
         {
             setAccValueCallback_blue(blue_acc.Value);
